@@ -15,9 +15,12 @@
                 </button>
             </li>
 
-            <li><a class="active" href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('assets/about.php') }}">About</a></li>
+            <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
+            <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
+
+            @auth
             <li><a href="{{ url('assets/admins.php') }}">Admins</a></li>
+            @endauth
 
             <li class="dropdown">
                 <a class="dropbtn">
@@ -30,10 +33,30 @@
                 </div>
             </li>
 
-            <li><a href="{{ url('assets/customer_profile.php') }}">Profile</a></li>
-            <li><a href="{{ url('assets/logsign.php') }}">Signup</a></li>
+            @auth
+            <li class="dropdown">
+                <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
+                    {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content" id="dr">
+                    <a href="/profile" }}">Profile</a>
+                    <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                    {{ __('Log Out') }}
+                </a>
 
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>                </div>
+            </li>
+            @endauth
+
+            @guest
+            <li><a href="/login">Login</a></li>
             <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            @endguest
+
         </ul>
     </div>
 

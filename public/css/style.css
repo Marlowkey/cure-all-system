@@ -10,12 +10,12 @@ font-family: 'Spartan', sans-serif;
 
 
 /* #navbar .form-outline {
-    margin-right: -10px; 
-    flex-grow: 1; 
+    margin-right: -10px;
+    flex-grow: 1;
 }
 
 #navbar .form-control {
-    width: 100%; 
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -132,7 +132,7 @@ h6 {
 body {
     width: 100%;
     background-color: #ffffff; /* Set background color to white */
-     background-repeat: no-repeat; 
+     background-repeat: no-repeat;
 }
 
 #header {
@@ -157,7 +157,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 #navbar li {
@@ -193,7 +193,7 @@ body {
 #mobile{
     display: none;
     align-items: center;
- 
+
 }
 #close{
     display: none;
@@ -265,7 +265,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    background-size: 510px 500px; 
+    background-size: 510px 500px;
     filter: drop-shadow(5px 5px 5px black)
 }
 
@@ -276,14 +276,14 @@ body {
 
 #hero h1{
     color: #0f0f0f;
-    
+
 }
 
 
 
 #hero button {
 
-    
+
     font-family: Arial;
     color: #ffffff;
     font-size: 20px;
@@ -297,70 +297,70 @@ body {
     transform: skewX(-15deg);
     border: none;
   }
-  
+
   #hero button:focus {
     outline: none;
   }
-  
+
   #hero button:hover {
     transition: 0.5s;
     box-shadow: 10px 10px 0 #FBC638;
   }
-  
+
   #hero button .second {
     transition: 0.5s;
     margin-right: 0px;
   }
-  
+
   #hero button:hover  .second {
     transition: 0.5s;
     margin-right: 45px;
   }
-  
+
   #hero .span {
     transform: skewX(15deg)
   }
-  
+
   #hero.second {
     width: 20px;
     margin-left: 30px;
     position: relative;
     top: 12%;
   }
-  
+
   .one {
     transition: 0.4s;
     transform: translateX(-60%);
   }
-  
+
   .two {
     transition: 0.5s;
     transform: translateX(-30%);
   }
-  
+
   #hero button:hover .three {
     animation: color_anim 1s infinite 0.2s;
   }
-  
+
   #hero button:hover .one {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.6s;
   }
-  
+
   #hero button:hover .two {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.4s;
   }
-  
+
   @keyframes color_anim {
     0% {
       fill: white;
     }
-  
+
     50% {
       fill: #FBC638;
     }
-  
+
     100% {
       fill: white;
     }
@@ -398,7 +398,7 @@ body {
 
 #about-head div{
     padding-left: 40px;
-    
+
 }
 
 
@@ -421,14 +421,14 @@ body {
     min-width: 250px;
     padding:10px 12px;
     border: 3px solid  #0915c5;
-   
+
     border-radius: 25px;
     cursor: pointer;
     box-shadow:  20px 20px 30px rgba(0, 0, 0, 0.02);
     margin: 15px 0;
     transition: 0.2s ease;
     position: relative;
-    
+
 }
 
 #product .pro:hover{
@@ -489,18 +489,18 @@ body {
     border: 1px solid #cce7d0;
     position:absolute;
     bottom: 20px;
-    right: 10px; 
-    transition: all 0.3s ease; 
-    transform-style: preserve-3d; 
+    right: 10px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
 }
 
 
 
 #product .pro .cart:hover {
-    background-color:  #e8f6ea; 
-    color:#4CAF50; 
-    border-color:  #e8f6ea; 
-    transform: scale(1.1) rotateX(10deg) rotateY(10deg); 
+    background-color:  #e8f6ea;
+    color:#4CAF50;
+    border-color:  #e8f6ea;
+    transform: scale(1.1) rotateX(10deg) rotateY(10deg);
 }
 
 h2 {
@@ -511,7 +511,7 @@ h2 {
 
 .custom-heading {
   font-size: 1.7rem;
-  
+
   font-family: 'Roboto', sans-serif;
     line-height: 54px;
     color: rgb(12, 12, 12);
@@ -553,7 +553,7 @@ h2 {
 #form-details form h2{
   font-size: 27px;
   line-height: 35px;
-  padding: 20px 0; 
+  padding: 20px 0;
 }
 
 #contact-detail .details h3{
@@ -578,24 +578,24 @@ h2 {
 #contact-detail .details li p{
   margin: 0;
   font-size: 14px;
-  
+
 }
 
 #contact-detail .map iframe{
   width: 100%;
   height: 100%;
-  
+
 }
 
 #contact-detail .map{
   width: 55%;
   height: 500px;
-  
+
 }
 
 #contact-detail .map h4{
   color: rgb(12, 11, 11);
-  
+
 }
 
 /* line 531, styles/_homepage.scss */
@@ -688,7 +688,7 @@ h2 {
 
 /* logsign */
 
-        
+
 .login-box{
 	width:100%;
 	margin:auto;
@@ -757,7 +757,7 @@ h2 {
 	color:#fff;
 	display:block;
 }
-      
+
 .login-space .group .input,
 .login-space .group .button{
 	border:none;
@@ -852,7 +852,7 @@ a{color:inherit;text-decoration:none}
 
 ::placeholder{
 color: #b3b3b3;
-} 
+}
 
 
 /* Customer-Profile */
@@ -901,11 +901,9 @@ color: #b3b3b3;
 
 footer{
    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='316' preserveAspectRatio='none' viewBox='0 0 1440 316'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2048%26quot%3b)' fill='none'%3e%3crect width='1440' height='316' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient2049%26quot%3b)'%3e%3c/rect%3e%3cpath d='M182.86 179.91L247.81 217.41L247.81 292.41L182.86 329.91L117.9 292.41L117.9 217.41zM247.81 292.41L312.76 329.91L312.76 404.91L247.81 442.41L182.86 404.91L182.86 329.91zM377.72 292.41L442.67 329.91L442.67 404.91L377.72 442.41L312.76 404.91L312.76 329.91zM442.67 -45.09L507.63 -7.59L507.63 67.41L442.67 104.91L377.72 67.41L377.72 -7.59zM507.63 67.41L572.58 104.91L572.58 179.91L507.63 217.41L442.67 179.91L442.67 104.91zM442.67 179.91L507.63 217.41L507.63 292.41L442.67 329.91L377.72 292.41L377.72 217.41zM507.63 292.41L572.58 329.91L572.58 404.91L507.63 442.41L442.67 404.91L442.67 329.91zM572.58 179.91L637.53 217.41L637.53 292.41L572.58 329.91L507.63 292.41L507.63 217.41zM832.39 -45.09L897.35 -7.59L897.35 67.41L832.39 104.91L767.44 67.41L767.44 -7.59zM1416.98 292.41L1481.93 329.91L1481.93 404.91L1416.98 442.41L1352.03 404.91L1352.03 329.91zM1546.89 292.41L1611.84 329.91L1611.84 404.91L1546.89 442.41L1481.93 404.91L1481.93 329.91z' stroke='%2303305d' stroke-width='2'%3e%3c/path%3e%3cpath d='M175.36 179.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM240.31 217.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM240.31 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM175.36 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM110.4 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM110.4 217.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM305.26 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM305.26 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM240.31 442.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM175.36 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM370.22 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM435.17 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM435.17 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM370.22 442.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM435.17 -45.09 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM500.13 -7.59 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM500.13 67.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM435.17 104.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM370.22 67.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM370.22 -7.59 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM565.08 104.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM565.08 179.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM500.13 217.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM435.17 179.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM500.13 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM370.22 217.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM565.08 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM565.08 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM500.13 442.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM630.03 217.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM630.03 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM824.89 -45.09 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM889.85 -7.59 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM889.85 67.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM824.89 104.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM759.94 67.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM759.94 -7.59 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1409.48 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1474.43 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1474.43 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1409.48 442.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1344.53 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1344.53 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1539.39 292.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1604.34 329.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1604.34 404.91 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1539.39 442.41 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='%2303305d'%3e%3c/path%3e%3cpath d='M11.71 122.57L55.01 147.57L55.01 197.57L11.71 222.57L-31.59 197.57L-31.59 147.57zM55.01 197.57L98.31 222.57L98.31 272.57L55.01 297.57L11.71 272.57L11.71 222.57zM11.71 272.57L55.01 297.57L55.01 347.57L11.71 372.57L-31.59 347.57L-31.59 297.57zM141.62 47.57L184.92 72.57L184.92 122.57L141.62 147.57L98.31 122.57L98.31 72.57zM98.31 122.57L141.62 147.57L141.62 197.57L98.31 222.57L55.01 197.57L55.01 147.57zM141.62 197.57L184.92 222.57L184.92 272.57L141.62 297.57L98.31 272.57L98.31 222.57zM228.22 47.57L271.52 72.57L271.52 122.57L228.22 147.57L184.92 122.57L184.92 72.57zM184.92 122.57L228.22 147.57L228.22 197.57L184.92 222.57L141.62 197.57L141.62 147.57zM228.22 197.57L271.52 222.57L271.52 272.57L228.22 297.57L184.92 272.57L184.92 222.57zM271.52 -27.43L314.83 -2.43L314.83 47.57L271.52 72.57L228.22 47.57L228.22 -2.43zM271.52 122.57L314.83 147.57L314.83 197.57L271.52 222.57L228.22 197.57L228.22 147.57zM358.13 122.57L401.43 147.57L401.43 197.57L358.13 222.57L314.83 197.57L314.83 147.57zM401.43 197.57L444.74 222.57L444.74 272.57L401.43 297.57L358.13 272.57L358.13 222.57zM488.04 47.57L531.34 72.57L531.34 122.57L488.04 147.57L444.74 122.57L444.74 72.57zM444.74 122.57L488.04 147.57L488.04 197.57L444.74 222.57L401.43 197.57L401.43 147.57zM444.74 272.57L488.04 297.57L488.04 347.57L444.74 372.57L401.43 347.57L401.43 297.57zM531.34 -27.43L574.64 -2.43L574.64 47.57L531.34 72.57L488.04 47.57L488.04 -2.43zM661.25 47.57L704.55 72.57L704.55 122.57L661.25 147.57L617.95 122.57L617.95 72.57zM747.85 47.57L791.16 72.57L791.16 122.57L747.85 147.57L704.55 122.57L704.55 72.57zM834.46 47.57L877.76 72.57L877.76 122.57L834.46 147.57L791.16 122.57L791.16 72.57zM791.16 122.57L834.46 147.57L834.46 197.57L791.16 222.57L747.85 197.57L747.85 147.57zM834.46 197.57L877.76 222.57L877.76 272.57L834.46 297.57L791.16 272.57L791.16 222.57zM921.06 197.57L964.37 222.57L964.37 272.57L921.06 297.57L877.76 272.57L877.76 222.57zM877.76 272.57L921.06 297.57L921.06 347.57L877.76 372.57L834.46 347.57L834.46 297.57zM964.37 -27.43L1007.67 -2.43L1007.67 47.57L964.37 72.57L921.06 47.57L921.06 -2.43zM1007.67 47.57L1050.97 72.57L1050.97 122.57L1007.67 147.57L964.37 122.57L964.37 72.57zM964.37 272.57L1007.67 297.57L1007.67 347.57L964.37 372.57L921.06 347.57L921.06 297.57zM1050.97 -27.43L1094.27 -2.43L1094.27 47.57L1050.97 72.57L1007.67 47.57L1007.67 -2.43zM1094.27 47.57L1137.58 72.57L1137.58 122.57L1094.27 147.57L1050.97 122.57L1050.97 72.57zM1094.27 197.57L1137.58 222.57L1137.58 272.57L1094.27 297.57L1050.97 272.57L1050.97 222.57zM1050.97 272.57L1094.27 297.57L1094.27 347.57L1050.97 372.57L1007.67 347.57L1007.67 297.57zM1180.88 47.57L1224.18 72.57L1224.18 122.57L1180.88 147.57L1137.58 122.57L1137.58 72.57zM1137.58 122.57L1180.88 147.57L1180.88 197.57L1137.58 222.57L1094.27 197.57L1094.27 147.57zM1267.48 47.57L1310.79 72.57L1310.79 122.57L1267.48 147.57L1224.18 122.57L1224.18 72.57zM1224.18 122.57L1267.48 147.57L1267.48 197.57L1224.18 222.57L1180.88 197.57L1180.88 147.57zM1310.79 -27.43L1354.09 -2.43L1354.09 47.57L1310.79 72.57L1267.48 47.57L1267.48 -2.43zM1310.79 122.57L1354.09 147.57L1354.09 197.57L1310.79 222.57L1267.48 197.57L1267.48 147.57zM1354.09 197.57L1397.39 222.57L1397.39 272.57L1354.09 297.57L1310.79 272.57L1310.79 222.57z' stroke='rgba(6%2c 80%2c 156%2c 0.93)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2048'%3e%3crect width='1440' height='316' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='50%25' y1='100%25' x2='50%25' y2='0%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2049'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(3%2c 106%2c 239%2c 1)' offset='0.92'%3e%3c/stop%3e%3cstop stop-color='rgba(3%2c 106%2c 239%2c 1)' offset='0.93'%3e%3c/stop%3e%3cstop stop-color='rgba(3%2c 106%2c 239%2c 1)' offset='0.96'%3e%3c/stop%3e%3cstop stop-color='rgba(3%2c 106%2c 239%2c 1)' offset='0.97'%3e%3c/stop%3e%3cstop stop-color='rgba(3%2c 106%2c 239%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
-    height: 90vh;
+    height: auto;
     width: 100%;
     background-size: cover;
-   
-    
 }
 
 .fa-info-circle, .fa-map-marker-alt, .fa-phone{
@@ -1083,7 +1081,7 @@ footer{
         padding: 40px 40px;
     }
 
-    
+
     /* Adjusted styles for form input and button */
     #navbar .form-outline {
         margin-right: 10px; /* Adjust margin between input and button */
@@ -1137,7 +1135,7 @@ footer{
         margin-bottom: 25px;
     }
 
-    
+
     #mobile{
     display: flex;
     align-items: center;
@@ -1164,7 +1162,7 @@ footer{
     }
 
     #hero {
-   
+
     height: 70vh;
     padding: 0 80px;
     background-position: top 30% right 30%;
@@ -1193,4 +1191,3 @@ footer{
 
 }
 
- 

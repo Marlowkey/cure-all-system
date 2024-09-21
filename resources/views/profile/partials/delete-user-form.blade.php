@@ -1,16 +1,18 @@
-<div class="card">
-    <div class="card-header">{{ __('Delete Account') }}</div>
+<div class="container mt-2">
+    <div class="outer-container">
+        <div class="row row-space justify-content-center">
+            <!-- Delete Account Container -->
+            <div class="col-md-5 bordered-container">
+                <h2 class="text-black">{{ __('Delete Account') }}</h2>
+                <div class="mb-3">
+                    {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+                </div>
 
-    <div class="card-body">
-        <div class="mb-3">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
-        </div>
-
-        <div class="row mb-0">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
-                    {{ __('Delete Account') }}
-                </button>
+                <div class="form-buttons text-center mb-3">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                        {{ __('Delete Account') }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -30,13 +32,11 @@
         <div class="mb-3">
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
         </div>
-        <form id="deleteAccountForm" method="post" action="{{ route('profile.destroy') }}" class="p-6">
+        <form id="deleteAccountForm" method="POST" action="{{ route('profile.destroy') }}">
             @csrf
             @method('delete')
-
-            <div>
+            <div class="form-group">
                 <input type="password" class="form-control @error('password', 'userDeletion') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" required>
-
                 @error('password', 'userDeletion')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -56,7 +56,6 @@
     </div>
   </div>
 </div>
-
 @push('scripts')
     @php $shouldOpenModal = $errors->userDeletion->isNotEmpty(); @endphp
 
@@ -70,4 +69,4 @@
             });
         }
     </script>
-@endPush
+@endpush

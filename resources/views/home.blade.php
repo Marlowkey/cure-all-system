@@ -1,6 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 @section('content')
     <x-main-content />
-
-    </body>
 @endsection
