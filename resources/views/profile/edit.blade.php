@@ -8,10 +8,8 @@
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
-                    <img src="{{ Auth::user()->user_image ?  asset('storage/' . Auth::user()->user_image) : 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp' }}"
-                         class="rounded-circle mb-3"
-                         style="width: 215px;"
-                         alt="Avatar" />
+
+                    <x-avatar :user_image="Auth::user()->user_image"/>
 
                     <form action="{{ route('profile.avatar') }}" method="POST" enctype="multipart/form-data">
                         @csrf

@@ -1,21 +1,10 @@
 <section id="header">
-    <a href="/home"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
+    <a href="#"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
 
     <div>
         <ul id="navbar" class="list-unstyled">
-            <li>
-                <a class="form-outline" data-mdb-input-init>
-                    <input type="search" id="form1" class="form-control" />
-                </a>
-            </li>
-            <li>
-                <button type="button" class="btn btn-primary" data-mdb-ripple-init>
-                    <i class="fas fa-search"></i>
-                </button>
-            </li>
 
-            <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
-            <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
+            <li><a class="{{ request()->is('home') ? 'active' : '' }}" href="/">Home</a></li>
 
             <li class="dropdown">
                 <a class="dropbtn">
@@ -34,7 +23,7 @@
                         {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-content" id="dr">
-                        <a href="/profile" }}">Profile</a>
+                        <a href="/profile">Profile</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -47,12 +36,6 @@
                     </div>
                 </li>
             @endauth
-
-            @guest
-                <li><a href="/login">Login</a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-            @endguest
-
         </ul>
     </div>
 
@@ -60,5 +43,3 @@
         <i id="bar" class="fas fa-outdent"></i>
     </div>
 </section>
-
-
