@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-
 <style>
     .container-fluid {
         margin: 0 auto;
@@ -77,7 +75,7 @@
         </div>
 
         <div class="pro">
-            <a href="{{ asset('WEB/assets2/sproduct.php?productId=16') }}">
+            <a href="{{ asset('/product.php?productId=16') }}">
                 <img src="{{ asset('img/losartan.jpg') }}" alt="none">
             </a>
             <div class="des">
@@ -86,17 +84,16 @@
                 <h4 id="productPrice">₱160</h4>
             </div>
             <div class="cart">
-                <i class="fa-solid fa-cart-shopping"
-                    onclick="addToCart('16', 'Fuel Pumps', 160,1, 160, '{{ asset('img/image1.jpg') }}');"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
     </div>
 </section>
 
 <section class="social-map">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-12 social-container">
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-6 text-center social-container">
                 <div class="details">
                     <h4 class="title">Our Social Media</h4>
                     <div class="social-fb">

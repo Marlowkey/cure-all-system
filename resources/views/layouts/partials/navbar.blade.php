@@ -16,7 +16,7 @@
 
             <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
-
+            <li><a class="{{ request()->is('medicines') ? 'active' : '' }}" href="/medicines">Medicine</a></li>
             <li class="dropdown">
                 <a class="dropbtn">
                     Services <i class="fas fa-chevron-down"></i>
@@ -34,7 +34,7 @@
                         {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
                     </a>
                     <div class="dropdown-content" id="dr">
-                        <a href="/profile" }}">Profile</a>
+                        <a href="/profile">Profile</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

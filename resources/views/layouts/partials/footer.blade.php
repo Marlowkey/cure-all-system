@@ -2,9 +2,9 @@
     <!-- Grid container -->
     <div class="container p-4">
         <!--Grid row-->
-        <div class="row my-4">
+        <div class="row justify-content-center my-4">
             <!--Grid column-->
-            <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mb-md-0 text-center" id="para">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mb-md-0 text-center" id="para">
                 <div class="rounded-circle bg-white shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto"
                     style="width: 150px; height: 150px;">
                     <img src="{{ asset('img/cdhi-logo.png') }}" style="width: 100%; height: auto;" alt="CURE ALL Logo" loading="lazy" />
