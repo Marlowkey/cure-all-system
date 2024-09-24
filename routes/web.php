@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
 
@@ -25,5 +26,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('medicines', MedicineController::class);
+Route::get('/search', SearchController::class);
 
 require __DIR__.'/auth.php';

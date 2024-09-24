@@ -3,16 +3,14 @@
 
     <div>
         <ul id="navbar" class="list-unstyled">
-            <li>
-                <a class="form-outline" data-mdb-input-init>
-                    <input type="search" id="form1" class="form-control" />
+            <form action="/search" method="GET" class="d-flex">
+                <a class="form-outline m-2" data-mdb-input-init>
+                    <input type="search" class="form-control me-2 h-auto" name="q" placeholder="Losartan..." />
                 </a>
-            </li>
-            <li>
-                <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+                <button type="submit" class="btn btn-primary h-auto">
                     <i class="fas fa-search"></i>
                 </button>
-            </li>
+            </form>
 
             <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
