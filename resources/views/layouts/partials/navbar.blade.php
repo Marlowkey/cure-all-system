@@ -3,18 +3,18 @@
 
     <div>
         <ul id="navbar" class="list-unstyled">
-            <form action="/search" method="GET" class="d-flex m-2">
-                <div class="input-group">
-                    <input type="search" class="form-control" name="q" placeholder="Losartan..." />
-                    <span class="input-group-text">
-                        <i class="fas fa-search"></i>
-                    </span>
+            <form action="/search" method="GET" class="row g-2">
+                <div class="col-12 col-md-12 col-lg-12 mx-auto">
+                    <div class="input-group">
+                        <input type="search" class="form-control w-auto" name="q" placeholder="Losartan..." />
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
                 </div>
             </form>
 
-
-
-            <li><a class="{{ request()->is('/') ? 'active' : '' }}" href="/">Home</a></li>
+            <li><a class="{{ request()->is('/') ? 'active' : '' }} " href="/">Home</a></li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
             <li><a class="{{ request()->is('medicines') ? 'active' : '' }}" href="/medicines">Medicine</a></li>
             <li class="dropdown">
