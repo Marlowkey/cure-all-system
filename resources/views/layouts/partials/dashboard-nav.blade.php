@@ -4,7 +4,7 @@
     <div>
         <ul id="navbar" class="list-unstyled">
 
-            <li><a class="{{ request()->is('home') ? 'active' : '' }}" href="/">Home</a></li>
+            <li><a class="{{ request()->is('home') ? 'active' : '' }}" href="/home">Home</a></li>
 
             <li class="dropdown">
                 <a class="dropbtn">

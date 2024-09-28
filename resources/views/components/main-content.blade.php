@@ -7,9 +7,9 @@
 
     .landing-container {
         background-color: #155724;
-        padding: 15px;
+        padding: 50px;
         height: 100%;
-        width: auto;
+        width: 75%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,22 +28,22 @@
 </style>
 
 <section class="hero">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <!-- Left side: Description -->
-            <div class="col-md-8 d-flex">
-                <div class="landing-container" id="para">
-                    <p class="text-white">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet feugiat lorem, in faucibus justo. Donec sodales non nisi sit amet maximus. Quisque convallis dolor eget justo tristique, a feugiat sapien volutpat.
-                    </p>
-                </div>
-            </div>
-            <!-- Right side: Hero Image -->
-            <div class="col-md-6">
-                <div id="hero">
+    <div class="row justify-content-center align-items-center">
+        <!-- Left side: Description -->
+        <div class="col-md-7 d-flex justify-content-center align-items-center">
+            <div class="landing-container" id="para">
+                <p class="text-white">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet feugiat lorem, in faucibus
+                    justo. Donec sodales non nisi sit amet maximus. Quisque convallis dolor eget justo tristique, a
+                    feugiat sapien volutpat.
+                </p>
             </div>
         </div>
-    </div>
+        <!-- Right side: Hero Image -->
+        <div class="col-md-4 ms-md-2">
+            <div id="hero">
+            </div>
+        </div>
 </section>
 
 
@@ -93,7 +93,7 @@
 <section class="social-map">
     <div class="container ">
         <div class="row justify-content-center">
-            <div class="col-lg-3 col-md-6 col-sm-6 text-center social-container">
+            <div class="col-lg-9 col-md-6 col-sm-12 text-center social-container">
                 <div class="details">
                     <h4 class="title">Our Social Media</h4>
                     <div class="social-fb">

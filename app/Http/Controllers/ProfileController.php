@@ -62,7 +62,7 @@ class ProfileController extends Controller
 
         $user = $request->user();
         $image_path = $request->file('user_image')->store('profile_images', 'public');
-        $user->user_image =$image_path;
+        $user->user_image = $image_path;
         $user->save();
 
         return Redirect::route('profile.edit')->with('success', 'Avatar updated');
