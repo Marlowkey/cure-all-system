@@ -9,4 +9,9 @@ class Medicine extends Model
 {
     protected $guarded = [];
     use HasFactory;
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }
