@@ -10,7 +10,7 @@
         <h4 id="productPrice">₱{{ number_format($medicine->price, 2) }}</h4>
     </div>
     <div class="cart">
-        <form action="{{ route('order-items.store') }}" method="POST" class="d-flex flex-column align-items-start mr-4">
+        <form action="{{ route('cart.store') }}" method="POST" class="d-flex flex-column align-items-start mr-4">
             @csrf
             <input type="hidden" name="medicine_id" value="{{ $medicine->id }}">
             <input type="hidden" name="quantity" value="1">

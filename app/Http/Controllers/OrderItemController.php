@@ -15,7 +15,7 @@ class OrderItemController extends Controller
     {
         $user = Auth::user();
         $orderItems = $user->orderItems()->with('medicine')->get();
-        return view('order-items.index', compact('orderItems'));
+        return view('cart.index', compact('orderItems'));
     }
 
     public function store(Request $request)
@@ -42,6 +42,28 @@ class OrderItemController extends Controller
                 'price' => Medicine::find($request->medicine_id)->price,
             ]);
         }
-        return Redirect::route('order-items.index')->with('success', 'Item added to cart successfully');
+        return Redirect::route('cart.index')->with('success', 'Item added to cart successfully');
     }
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'quantity' => 'required|integer|min:1'
+    ]);
+
+    $orderItem = OrderItem::findOrFail($id);
+
+    $orderItem->quantity = $request->quantity;
+    $orderItem->save();
+
+    return redirect()->route('cart.index')->with('success', 'Cart updated successfully!');
+}
+
+    public function destroy($id)
+    {
+        $orderItem = OrderItem::find($id);
+        $orderItem->delete();
+        return Redirect::route('cart.index')->with('success', 'Item removed from cart successfully');
+    }
+
 }
