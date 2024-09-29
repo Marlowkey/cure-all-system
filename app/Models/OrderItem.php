@@ -20,4 +20,9 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Medicine::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
