@@ -3,6 +3,7 @@
 use App\Models\Medicine;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
@@ -29,7 +30,10 @@ Route::resource('medicines', MedicineController::class);
 Route::get('/search', SearchController::class);
 
 
-Route::get('/cart', [OrderItemController::class, 'index'])->middleware('auth')->name('order-items.index');
-Route::post('/cart', [OrderItemController::class, 'store'])->middleware('auth')->name('order-items.store');
+Route::get('/cart', [OrderItemController::class, 'index'])->middleware('auth')->name('cart.index');
+Route::post('/cart', [OrderItemController::class, 'store'])->middleware('auth')->name('cart.store');
+Route::delete('/cart/{id}', [OrderItemController::class, 'destroy'])->middleware('auth')->name('cart.destroy');
+Route::patch('/cart/{id}', [OrderItemController::class, 'update'])->name('cart.update');
 
+Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
 require __DIR__.'/auth.php';
