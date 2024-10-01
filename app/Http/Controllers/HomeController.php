@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     private function adminView($user)
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 }

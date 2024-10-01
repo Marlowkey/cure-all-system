@@ -1,22 +1,8 @@
 <section id="header">
-    <a href="#"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
+    <a href="/home"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
 
     <div>
         <ul id="navbar" class="list-unstyled">
-
-            <li><a class="{{ request()->is('home') ? 'active' : '' }}" href="/home">Home</a></li>
-
-            <li class="dropdown">
-                <a class="dropbtn">
-                    Services <i class="fas fa-chevron-down"></i>
-                </a>
-                <div class="dropdown-content" id="dr">
-                    <a href="{{ url('assets/Service1.php') }}">Service 1</a>
-                    <a href="{{ url('assets/Service2.php') }}">Service 2</a>
-                    <a href="{{ url('assets/Service3.php') }}">Service 3</a>
-                </div>
-            </li>
-
             @auth
                 <li class="dropdown">
                     <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
@@ -36,6 +22,12 @@
                     </div>
                 </li>
             @endauth
+
+            @guest
+                <li><a href="/login">Login</a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            @endguest
+
         </ul>
     </div>
 
@@ -43,3 +35,5 @@
         <i id="bar" class="fas fa-outdent"></i>
     </div>
 </section>
+
+

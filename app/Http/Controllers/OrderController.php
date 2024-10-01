@@ -42,8 +42,7 @@ class OrderController extends Controller
             $orderItem->update(['order_id' => $order->id]);
         }
 
-        OrderItem::where('user_id', auth()->id())->delete();
-
+        
         return redirect()->route('cart.index')->with('success', 'Order placed successfully!');
     }
 
