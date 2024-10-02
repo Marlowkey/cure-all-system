@@ -18,6 +18,7 @@
     <link href="{{ asset('css/animsition.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet"
         href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css') }}">
 
@@ -27,171 +28,267 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <style>
-    @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+    a {
+        transition: background 0.2s, color 0.2s;
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: none;
+    }
 
     #wrapper {
         padding-left: 0;
-        -webkit-transition: all .5s ease;
-        -moz-transition: all .5s ease;
-        -o-transition: all .5s ease;
-        transition: all .5s ease;
-    }
-
-    @media (min-width: 992px) {
-        #wrapper {
-            padding-left: 225px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        #wrapper #sidebar-wrapper {
-            width: 225px;
-        }
-    }
-
-    #sidebar-wrapper {
-        border-right: 1px solid #e7e7e7;
+        transition: all 0.5s ease;
+        position: relative;
     }
 
     #sidebar-wrapper {
         z-index: 1000;
         position: fixed;
-        left: 225px;
+        left: 250px;
         width: 0;
         height: 100%;
-        margin-left: -225px;
+        margin-left: -250px;
         overflow-y: auto;
-        background: #f8f8f8;
-        -webkit-transition: all .5s ease;
-        -moz-transition: all .5s ease;
-        -o-transition: all .5s ease;
-        transition: all .5s ease;
+        overflow-x: hidden;
+        background: #eee;
+        transition: all 0.5s ease;
     }
 
-    #sidebar-wrapper .sidebar-nav {
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    .sidebar-nav {
         position: absolute;
-        top: 0;
-        width: 225px;
-        font-size: 14px;
+        top: 35px;
+        width: 250px;
         margin: 0;
         padding: 0;
         list-style: none;
     }
 
-    #sidebar-wrapper .sidebar-nav li {
-        font-size: 1.9rem;
-        text-indent: 0;
-        line-height: 45px;
+    .sidebar-nav>li {
+        text-indent: 10px;
+        line-height: 42px;
     }
 
-    #sidebar-wrapper .sidebar-nav li a {
-        font-size: 1.9rem;
+    .sidebar-nav>li a {
         display: block;
         text-decoration: none;
-        color: #428bca;
-        padding: 6%;
+        color: #1a1a1a;
+        font-weight: 600;
 
     }
 
-    .sidebar-nav li:first-child a {
-        background: #92bce0 !important;
-        color: #fff !important;
-    }
-
-    #sidebar-wrapper .sidebar-nav li a .sidebar-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.9rem;
-        padding: 7px;
-        display: inline-block;
-        text-indent: 7px;
-        margin-right: 10px;
+    .sidebar-nav>li>a:hover,
+    .sidebar-nav>li.active>a {
+        text-decoration: none;
         color: #fff;
-        float: left;
+        background: #1551a4;
     }
 
-    #sidebar-wrapper .sidebar-nav li a .caret {
+    .sidebar-nav>li>a i.fa {
+        width: 60px;
+    }
+
+    #navbar-wrapper {
+        width: 100%;
         position: absolute;
-        right: 23px;
-        top: auto;
-        margin-top: 20px;
+        z-index: 2;
     }
 
-    #sidebar-wrapper .sidebar-nav li ul.panel-collapse {
-        list-style: none;
-        -moz-padding-start: 0;
-        -webkit-padding-start: 0;
-        -khtml-padding-start: 0;
-        -o-padding-start: 0;
-        padding-start: 0;
-        padding: 0;
+    #wrapper.toggled #navbar-wrapper {
+        position: absolute;
+        margin-right: -250px;
     }
 
-    #sidebar-wrapper .sidebar-nav li ul.panel-collapse li i {
-        margin-right: 10px;
+    #navbar-wrapper .navbar {
+        border-width: 0 0 0 0;
+        background-color: #eee;
+        font-size: 24px;
+        margin-bottom: 0;
+        border-radius: 0;
     }
 
-    #sidebar-wrapper .sidebar-nav li ul.panel-collapse li {
-        text-indent: 15px;
+    #navbar-wrapper .navbar a {
+        color: #757575;
     }
 
-    @media (max-width: 992px) {
-        #wrapper #sidebar-wrapper {
-            width: 13%;
+    #navbar-wrapper .navbar a:hover {
+        color: #F8BE12;
+    }
+
+    #content-wrapper {
+        width: 100%;
+        position: absolute;
+        padding: 15px;
+        top: 100px;
+    }
+
+    #wrapper.toggled #content-wrapper {
+        position: absolute;
+        margin-right: -250px;
+    }
+
+    @media (min-width: 992px) {
+        #wrapper {
+            padding-left: 250px;
         }
 
-        #wrapper #sidebar-wrapper #sidebar #sidemenu li ul {
-            position: fixed;
-            left: 45px;
-            margin-top: -45px;
-            z-index: 1000;
-            width: 200px;
-            height: 0;
+        #wrapper.toggled {
+            padding-left: 60px;
+        }
+
+        #sidebar-wrapper {
+            width: 250px;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            width: 60px;
+        }
+
+        #wrapper.toggled #navbar-wrapper {
+            position: absolute;
+            margin-right: -190px;
+        }
+
+        #wrapper.toggled #content-wrapper {
+            position: absolute;
+            margin-right: -190px;
+        }
+
+        #navbar-wrapper {
+            position: relative;
+        }
+
+        #wrapper.toggled {
+            padding-left: 60px;
+        }
+
+        #content-wrapper {
+            position: relative;
+            top: 0;
+        }
+
+        #wrapper.toggled #navbar-wrapper,
+        #wrapper.toggled #content-wrapper {
+            position: relative;
+            margin-right: 60px;
         }
     }
 
-    .sidebar-nav li:first-child a {
-        background: #92bce0 !important;
-        color: #fff !important;
+    @media (min-width: 768px) and (max-width: 991px) {
+        #wrapper {
+            padding-left: 60px;
+        }
+
+        #sidebar-wrapper {
+            width: 60px;
+        }
+
+        #wrapper.toggled #navbar-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+
+        #wrapper.toggled #content-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+
+        #navbar-wrapper {
+            position: relative;
+        }
+
+        #wrapper.toggled {
+            padding-left: 250px;
+        }
+
+        #content-wrapper {
+            position: relative;
+            top: 0;
+        }
+
+        #wrapper.toggled #navbar-wrapper,
+        #wrapper.toggled #content-wrapper {
+            position: relative;
+            margin-right: 250px;
+        }
     }
 
-    .sidebar-nav li:nth-child(2) a {
-        background: #6aa3d5 !important;
-        color: #fff !important;
-    }
+    @media (max-width: 767px) {
+        #wrapper {
+            padding-left: 0;
+        }
 
-    .sidebar-nav li:nth-child(3) a {
-        background: #428bca !important;
-        color: #fff !important;
-    }
+        #sidebar-wrapper {
+            width: 0;
+        }
 
-    .sidebar-nav li:nth-child(4) a {
-        background: #3071a9 !important;
-        color: #fff !important;
-    }
+        #wrapper.toggled #sidebar-wrapper {
+            width: 250px;
+        }
 
-    .sidebar-nav li:nth-child(5) a {
-        background: #245682 !important;
-        color: #fff !important;
+        #wrapper.toggled #navbar-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+
+        #wrapper.toggled #content-wrapper {
+            position: absolute;
+            margin-right: -250px;
+        }
+
+        #navbar-wrapper {
+            position: relative;
+        }
+
+        #wrapper.toggled {
+            padding-left: 250px;
+        }
+
+        #content-wrapper {
+            position: relative;
+            top: 0;
+        }
+
+        #wrapper.toggled #navbar-wrapper,
+        #wrapper.toggled #content-wrapper {
+            position: relative;
+            margin-right: 250px;
+        }
     }
 </style>
 
 <body>
+
     @include('layouts.partials.dashboard-nav')
     <div id="app" class="d-flex">
-        <nav>
-            @yield('sidebar') <!-- Section for the sidebar -->
+        <nav class="flex-shrink-0"> <!-- Fixed width for sidebar -->
+            @include('layouts.partials.admin-sidebar')
         </nav>
-
-        <div class="main-content p-4">
-            @yield('content') <!-- Section for the main content -->
+        <div class="flex-grow-1 p-3"> <!-- Content takes up the remaining space -->
+            @yield('content')
         </div>
     </div>
 
+    <script>
+        const $button = document.querySelector('#sidebar-toggle');
+        const $wrapper = document.querySelector('#wrapper');
+
+        $button.addEventListener('click', (e) => {
+            e.preventDefault();
+            $wrapper.classList.toggle('toggled');
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

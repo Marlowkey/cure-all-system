@@ -1,5 +1,5 @@
 <section id="header">
-    <a id="sidebar-toggle"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
+    <a href="/home"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
 
     <div>
         <ul id="navbar" class="list-unstyled">
@@ -35,6 +35,5 @@
         <i id="bar" class="fas fa-outdent"></i>
     </div>
 </section>
-
 
 
