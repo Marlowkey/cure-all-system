@@ -3,6 +3,7 @@
 use App\Models\Medicine;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
@@ -36,4 +37,6 @@ Route::delete('/cart/{id}', [OrderItemController::class, 'destroy'])->middleware
 Route::patch('/cart/{id}', [OrderItemController::class, 'update'])->name('cart.update');
 
 Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
+
+Route::resource( 'users', UserController::class)->middleware('auth');
 require __DIR__.'/auth.php';
