@@ -10,7 +10,7 @@ class MedicineController extends Controller
 
     public function index()
     {
-        $medicines = Medicine::simplePaginate(10);
+        $medicines = Medicine::simplePaginate(8);
         return view('medicine.index', compact('medicines'));
     }
 
