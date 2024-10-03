@@ -1,45 +1,33 @@
-<div class="container-fluid px-5"> <!-- Added padding to widen content -->
-    <h1 class="h1 mb-4">Tables</h1>
-    <!-- DataTables Example -->
-    <div class="card shadow mb-5"> <!-- Increased margin bottom for more space -->
-        <div class="card-header py-4"> <!-- Increased padding in the header -->
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered w-100" id="dataTable" cellspacing="0"> <!-- Ensures 100% width -->
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+@props(['users']) <!-- Accept an array of users -->
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered w-100" id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="h4">Name</th>
+                    <th class="h4">Email</th>
+                    <th class="h4">Username</th>
+                    <th class="h4">Contact</th>
+                    <th class="h4" style="width: 15%;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user) <!-- Loop through the users array -->
+                <tr>
+                    <td class="h5">{{ $user->name }}</td>
+                    <td class="h5">{{ $user->email }}</td>
+                    <td class="h5">{{ $user->username }}</td>
+                    <td class="h5">{{ $user->contact }}</td>
+                    <td>
+                        <div class="d-flex flex-wrap justify-content-start">
+                            <button class="btn btn-primary btn-lg me-2 mb-2">View</button>
+                            <button class="btn btn-warning btn-lg mb-2">Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>

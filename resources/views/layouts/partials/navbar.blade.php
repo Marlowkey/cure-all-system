@@ -2,7 +2,7 @@
     <a href="/home"><img src="{{ asset('img/icon.png') }}" class="logo" alt="none" width="18%"></a>
 
     <div>
-        <ul id="navbar" class="list-unstyled">
+        <ul id="navbar" class="list-unstyled ">
             <form action="/search" method="GET" class="row g-2">
                 <div class="col-12 col-md-12 col-lg-12 mx-auto">
                     <div class="input-group">

@@ -34,6 +34,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <style>
+    #sidebar-toggle i {
+        font-size: 1.4rem;
+        color: #ffffff;
+
+    }
+
     a {
         transition: background 0.2s, color 0.2s;
     }
