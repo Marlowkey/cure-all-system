@@ -7,7 +7,7 @@
     @endphp
     <section class="h-100 h-custom" style="background-color: #eee;">
         <div class="container h-100 py-5">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100 w-auto">
                 <div class="col">
                     <div class="card shopping-cart" style="border-radius: 15px;">
                         <div class="card-body">
@@ -20,14 +20,21 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="row">
-                                <div class="col-lg-8 px-5 py-4 ">
+                            <div class="row ">
+                                <div class="col-lg-8 px-5 py-4">
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <h3 class="fw-bold mb-0">Shopping Cart</h3>
                                     </div>
-                                    @foreach ($orderItems as $orderItem)
-                                        <x-order-items-card :orderItem="$orderItem" />
-                                    @endforeach
+
+                                    @if ($orderItems->isEmpty())
+                                        <div class="alert alert-warning">
+                                            Your shopping cart is empty. Please add some items.
+                                        </div>
+                                    @else
+                                        @foreach ($orderItems as $orderItem)
+                                            <x-order-items-card :orderItem="$orderItem" />
+                                        @endforeach
+                                    @endif
                                 </div>
                                 <div class="col-lg-4 px-5 py-4">
                                     <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Payment</h3>

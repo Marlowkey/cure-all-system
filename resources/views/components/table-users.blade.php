@@ -5,24 +5,24 @@
         <table class="table table-bordered w-100" id="dataTable" cellspacing="0">
             <thead>
                 <tr>
-                    <th class="h4">Name</th>
-                    <th class="h4">Email</th>
-                    <th class="h4">Username</th>
-                    <th class="h4">Contact</th>
-                    <th class="h4" style="width: 15%;">Action</th>
+                    <th >Name</th>
+                    <th >Email</th>
+                    <th >Username</th>
+                    <th >Contacts</th>
+                    <th  style="width: 15%;">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($users as $user) <!-- Loop through the users array -->
                 <tr>
-                    <td class="h5">{{ $user->name }}</td>
-                    <td class="h5">{{ $user->email }}</td>
-                    <td class="h5">{{ $user->username }}</td>
-                    <td class="h5">{{ $user->contact }}</td>
+                    <td >{{ $user->name ?? '-'}}</td>
+                    <td >{{ $user->email ?? '-'}}</td>
+                    <td >{{ $user->username  ?? '-'}}</td>
+                    <td >{{ $user->contact_num ?? '-' }}</td>
                     <td>
                         <div class="d-flex flex-wrap justify-content-start">
-                            <button class="btn btn-primary btn-lg me-2 mb-2">View</button>
-                            <button class="btn btn-warning btn-lg mb-2">Edit</button>
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm me-2 mb-2">View</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm mb-2">Edit</a>
                         </div>
                     </td>
                 </tr>

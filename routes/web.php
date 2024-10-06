@@ -39,4 +39,5 @@ Route::patch('/cart/{id}', [OrderItemController::class, 'update'])->name('cart.u
 Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
 
 Route::resource( 'users', UserController::class)->middleware('auth');
+
 require __DIR__.'/auth.php';

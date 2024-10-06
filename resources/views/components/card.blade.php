@@ -3,10 +3,10 @@
         <div class="card-body">
             <div class="row no-gutters align-items-center justify-content-center text-center">
                 <div class="col-8">
-                    <div class="text-sm font-weight-bold text-{{ $textColor }} text-uppercase mb-1" style="font-size: 1.2rem;">
+                    <div class="text-sm font-weight-bold text-{{ $textColor }} text-uppercase mb-1">
                         {{ $title }}
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 1.8rem;">
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
                         {{ $value }}
                     </div>
                 </div>

@@ -34,7 +34,7 @@
             </div>
 
             <!-- Update quantity form -->
-            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <div class="col-md-4 col-lg-4 col-xl-3 d-flex">
                 <form action="{{ route('cart.update', ['id' => $orderItem->id]) }}" method="POST" class="d-flex" id="form-{{ $orderItem->id }}">
                     @csrf
                     @method('PATCH')

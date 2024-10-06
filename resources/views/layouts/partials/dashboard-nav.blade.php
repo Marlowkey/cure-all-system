@@ -1,5 +1,5 @@
 <section id="header" class="d-flex justify-content-between align-items-center p-3">
-    <a id="sidebar-toggle" class="btn mx-4">
+    <a id="sidebar-toggle" class="btn ">
         <i class="fas fa-bars"></i>
     </a>
     <div class="flex-grow-1 text-center"> <!-- Add this container for centering -->

@@ -24,8 +24,6 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('/img/icon1.jpg') }}" type="image/x-icon">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -37,7 +35,6 @@
     #sidebar-toggle i {
         font-size: 1.4rem;
         color: #ffffff;
-
     }
 
     a {
@@ -278,10 +275,10 @@
 
     @include('layouts.partials.dashboard-nav')
     <div id="app" class="d-flex">
-        <nav class="flex-shrink-0"> <!-- Fixed width for sidebar -->
+        <nav class="flex-shrink-0">
             @include('layouts.partials.admin-sidebar')
         </nav>
-        <div class="flex-grow-1 p-3"> <!-- Content takes up the remaining space -->
+        <div class="flex-grow-1 p-3" >
             @yield('content')
         </div>
     </div>
