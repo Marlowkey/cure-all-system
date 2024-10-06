@@ -268,7 +268,7 @@
 </style>
 
 <body>
-    @if (auth()->check() && auth()->user()->role === 'customer')
+    @if (auth()->guest() || auth()->check() && auth()->user()->role === 'customer')
         @include('layouts.partials.navbar')
         <div id="app">
             @yield('content')

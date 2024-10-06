@@ -14,8 +14,9 @@
                 </div>
             </form>
 
-            <li><a class="{{ request()->is('/') ? 'active' : '' }} " href="/home">Home</a></li>
-
+            <li class="mt-3 mt-md-0">
+                <a class="{{ request()->is('/') ? 'active' : '' }}" href="/home">Home</a>
+            </li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
             <li><a class="{{ request()->is('medicines') ? 'active' : '' }}" href="/medicines">Medicine</a></li>
 
@@ -30,8 +31,6 @@
                     <a href="{{ url('assets/Service3.php') }}">Service 3</a>
                 </div>
             </li>
-
-
             @auth
             @if(Auth::user()->role != 'customer')
             <li><a href="/home">Dashboard</a></li>
