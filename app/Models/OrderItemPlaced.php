@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class OrderItem extends Model
+class OrderItemPlaced extends Model
 {
-    protected $guarded = [];
     use HasFactory;
+
+    protected $table = 'order_items_placed';
+    protected $guarded = [];
 
     public function user()
     {
@@ -21,4 +22,8 @@ class OrderItem extends Model
         return $this->belongsTo(Medicine::class);
     }
 
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
