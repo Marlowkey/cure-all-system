@@ -29,8 +29,11 @@
 </head>
 
 <body>
-     @include('layouts.partials.navbar')
-
+    @if (request()->is('profile'))
+        @include('layouts.partials.profile-nav')
+    @else
+        @include('layouts.partials.navbar')
+    @endif
     <div id="app">
         @yield('content')
     </div>
