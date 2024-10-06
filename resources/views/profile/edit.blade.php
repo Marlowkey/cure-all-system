@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@if ($role == 'customer')
+    @extends('layouts.app')
+@else
+    @extends('layouts.app-dashboard')
+@endif
+
 @section('content')
     <div class="container mt-5 mb-5 p-2 ">
         <div class="row justify-content-center">
