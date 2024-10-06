@@ -274,10 +274,10 @@
             @yield('content')
         </div>
     @else
-        @include('layouts.partials.dashboard-nav')
+        @include('layouts.partials.navbar-dashboard')
         <div id="app" class="d-flex">
             <nav class="flex-shrink-0">
-                @include('layouts.partials.admin-sidebar')
+                @include('layouts.partials.sidebar-admin')
             </nav>
             <div class="flex-grow-1 p-3">
                 @yield('content')

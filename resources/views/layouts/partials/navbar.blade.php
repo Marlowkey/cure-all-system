@@ -31,25 +31,34 @@
                 </div>
             </li>
 
-            @auth
-                <li class="dropdown">
-                    <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
-                        {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-content" id="dr">
-                        <a href="/profile">Profile</a>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endauth
+            @auth
+            @if(Auth::user()->role != 'customer')
+            <li><a href="/home">Dashboard</a></li>
+            @else
+            <li class="dropdown">
+                <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
+                    {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content" id="dr">
+                    <a href="/profile">Profile</a>
+
+
+
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            @endif
+
+        @endauth
 
             @guest
                 <li><a href="/login">Login</a></li>
