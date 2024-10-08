@@ -30,6 +30,36 @@ class OrderController extends Controller
 
         return view('orders.index', compact('orders'));
     }
+
+    public function show($id)
+    {
+        $user = Auth::user();
+
+        if ($user->hasRole('customer')) {
+            $order = $user->orders()
+                ->with(['orderItems.medicine'])
+                ->where('id', $id)
+                ->first();
+
+            if (!$order) {
+                return redirect()->back()->with('error', 'You are not authorized to view this order.');
+            }
+
+        } elseif ($user->hasRole('pharmacist')) {
+            $order = Order::with(['orderItems.medicine'])
+                ->where('id', $id)
+                ->first();
+
+            if (!$order) {
+                return redirect()->back()->with('error', 'Order not found.');
+            }
+
+        } else {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        return view('orders.show', compact('order'));
+    }
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
