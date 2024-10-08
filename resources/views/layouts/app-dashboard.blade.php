@@ -276,7 +276,7 @@
     @include('layouts.partials.navbar-dashboard')
     <div id="app" class="d-flex">
         <nav class="flex-shrink-0">
-            @include('layouts.partials.sidebar-admin')
+            @yield('sidebar')
         </nav>
         <div class="flex-grow-1 p-3" >
             @yield('content')

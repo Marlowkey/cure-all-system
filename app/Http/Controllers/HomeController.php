@@ -13,7 +13,7 @@ class HomeController extends Controller
             case 'customer':
                 return $this->customerView($user);
             case 'admin':
-                return $this->adminView($user);
+                return $this->pharmacistView($user);
             case 'pharmacist':
                 return $this->adminView($user);
             case 'rider':
@@ -29,5 +29,10 @@ class HomeController extends Controller
     private function adminView($user)
     {
         return view('admin.dashboard');
+    }
+
+    private function pharmacistView($user)
+    {
+        return view('pharmacist.dashboard');
     }
 }
