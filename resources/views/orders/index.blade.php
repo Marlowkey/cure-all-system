@@ -133,8 +133,12 @@
                         <div class="card-body">
                             <h5>Shipping Address</h5>
                             <p><strong>{{ auth()->user()->name }}</strong></p>
-                            <p>{{ auth()->user()->address }}</p>
-                            <p>Contact: {{ auth()->user()->contact }}</p>
+                            <p>
+                                {{ auth()->user()->street }}<br>
+                                {{ auth()->user()->barangay }}<br>
+                                {{ auth()->user()->municipality }}
+                            </p>
+                            <p>Contact: {{ auth()->user()->contact_num }}</p>
                         </div>
                     </div>
 
@@ -145,12 +149,11 @@
                             <div>
                                 <span>{{ $item->medicine->brand }}</span>
                                 <h4>{{  $item->medicine->name }}</h4>
-                                <h4 id="productPrice">₱{{ session('order_total') }}</h4>
+                                <h4 id="productPrice">₱{{  $item->medicine->price }}</h4>
                             </div>
                         </div>
                     </div>
                     @endforeach
-
 
                     <div class="row mb-4">
                         <div class="col-sm-6">
