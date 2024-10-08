@@ -10,14 +10,6 @@ use App\Http\Requests\Order\StoreOrderRequest;
 
 class OrderController extends Controller
 {
-
-    public function index()
-    {
-        $user = Auth::user();
-        $orderItems = $user->orderItemPlaced()->with('medicine')->get();
-        return view('layouts.partials.tracking', compact('orderItems'));
-    }
-    // Store order logic
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();

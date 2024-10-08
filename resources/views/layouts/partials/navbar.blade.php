@@ -14,8 +14,9 @@
                 </div>
             </form>
 
-            <li><a class="{{ request()->is('/') ? 'active' : '' }} " href="/home">Home</a></li>
-
+            <li class="mt-3 mt-md-0">
+                <a class="{{ request()->is('/') ? 'active' : '' }}" href="/home">Home</a>
+            </li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
             <li><a class="{{ request()->is('medicines') ? 'active' : '' }}" href="/medicines">Medicine</a></li>
 
@@ -30,26 +31,33 @@
                     <a href="{{ url('assets/Service3.php') }}">Service 3</a>
                 </div>
             </li>
-
             @auth
-                <li class="dropdown">
-                    <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
-                        {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-content" id="dr">
-                        <a href="/profile">Profile</a>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
+            @if(Auth::user()->role != 'customer')
+            <li><a href="/home">Dashboard</a></li>
+            @else
+            <li class="dropdown">
+                <a class="{{ request()->is('profile') ? 'active' : '' }}" class="dropbtn">
+                    {{ Auth::user()->name }} <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content" id="dr">
+                    <a href="/profile">Profile</a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endauth
+
+
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            @endif
+
+        @endauth
 
             @guest
                 <li><a href="/login">Login</a></li>
