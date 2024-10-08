@@ -19,7 +19,7 @@
             </li>
             <li><a class="{{ request()->is('about') ? 'active' : '' }}" href="/about">About</a></li>
             <li><a class="{{ request()->is('medicines') ? 'active' : '' }}" href="/medicines">Medicine</a></li>
-
+            <li><a class="{{ request()->is('orders') ? 'active' : '' }}" href="{{ route('orders.index') }}">Track Orders</a></li>
 
             <li class="dropdown">
                 <a class="dropbtn">

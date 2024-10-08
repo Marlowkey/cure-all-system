@@ -10,6 +10,56 @@ use App\Http\Requests\Order\StoreOrderRequest;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+
+        if ($user->hasRole('customer')) {
+            $orders = $user->orders()
+                ->with(['orderItems.medicine'])
+                ->latest()
+                ->get();
+        } elseif ($user->hasRole('pharmacist')) {
+            $orders = Order::with(['orderItems.medicine'])
+                ->latest()
+                ->get();
+        } else {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        return view('orders.index', compact('orders'));
+    }
+
+    public function show($id)
+    {
+        $user = Auth::user();
+
+        if ($user->hasRole('customer')) {
+            $order = $user->orders()
+                ->with(['orderItems.medicine'])
+                ->where('id', $id)
+                ->first();
+
+            if (!$order) {
+                return redirect()->back()->with('error', 'You are not authorized to view this order.');
+            }
+
+        } elseif ($user->hasRole('pharmacist')) {
+            $order = Order::with(['orderItems.medicine'])
+                ->where('id', $id)
+                ->first();
+
+            if (!$order) {
+                return redirect()->back()->with('error', 'Order not found.');
+            }
+
+        } else {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        return view('orders.show', compact('order'));
+    }
+
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
@@ -57,28 +107,8 @@ class OrderController extends Controller
 
         // Redirect to the tracking page with the order ID
         return redirect()->route('tracking.show')->with('success', 'Order placed successfully!');
-        
+
     }
-
-    public function trackingPage($id)
-    {
-        // Find the order by its ID, along with its related items and medicines
-        $order = Order::with('items.medicine')->findOrFail($id);
-
-        // Assuming there's at least one medicine per order
-        $medicine = $order->items->first()->medicine ?? null;
-
-        // Pass the order and medicine details to the view
-        return view('layouts.partials.tracking', compact('order', 'medicine'));
-    }
-
-   
-
-
-
-
-    
-
 
     private function generateReferenceNumber($length = 10)
     {

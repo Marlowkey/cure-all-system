@@ -90,6 +90,7 @@
     margin: 0;
 }
 </style>
+
 @foreach($orders as $order)
 <div class="container mt-4">
     <div class="row justify-content-center">
