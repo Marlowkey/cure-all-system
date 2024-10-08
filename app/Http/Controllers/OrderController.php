@@ -14,10 +14,20 @@ class OrderController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $orders = $user->orders()
-            ->with(['orderItems.medicine'])
-            ->latest()
-            ->get();
+
+        if ($user->hasRole('customer')) {
+            $orders = $user->orders()
+                ->with(['orderItems.medicine'])
+                ->latest()
+                ->get();
+        } elseif ($user->hasRole('pharmacist')) {
+            $orders = Order::with(['orderItems.medicine'])
+                ->latest()
+                ->get();
+        } else {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
         return view('orders.index', compact('orders'));
     }
     public function store(StoreOrderRequest $request)

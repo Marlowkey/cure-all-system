@@ -41,6 +41,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function hasRole($role)
+{
+    return $this->role === $role;
+}
+
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
