@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Models\OrderItemPlaced;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +10,14 @@ use App\Http\Requests\Order\StoreOrderRequest;
 
 class OrderController extends Controller
 {
+
+    public function index()
+    {
+        $user = Auth::user();
+        $orderItems = $user->orderItemPlaced()->with('medicine')->get();
+        return view('layouts.partials.tracking', compact('orderItems'));
+    }
+    // Store order logic
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
@@ -49,9 +56,38 @@ class OrderController extends Controller
             ]);
         }
 
-        $user->orderItems()->delete();
-        return redirect()->route('cart.index')->with('success', 'Order placed successfully!');
+
+        session([
+            'order_id' => $order->id,
+            'order_total' => $order->total,
+            'estimated_delivery' => 'Aug 28 – Aug 30', // Example date, adjust accordingly
+        ]);
+
+        // Redirect to the tracking page with the order ID
+        return redirect()->route('tracking.show')->with('success', 'Order placed successfully!');
+        
     }
+
+    public function trackingPage($id)
+    {
+        // Find the order by its ID, along with its related items and medicines
+        $order = Order::with('items.medicine')->findOrFail($id);
+
+        // Assuming there's at least one medicine per order
+        $medicine = $order->items->first()->medicine ?? null;
+
+        // Pass the order and medicine details to the view
+        return view('layouts.partials.tracking', compact('order', 'medicine'));
+    }
+
+   
+
+
+
+
+    
+
+
     private function generateReferenceNumber($length = 10)
     {
         return strtoupper(substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, $length));
