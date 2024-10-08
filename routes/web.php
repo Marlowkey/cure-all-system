@@ -37,7 +37,9 @@ Route::delete('/cart/{id}', [OrderItemController::class, 'destroy'])->middleware
 Route::patch('/cart/{id}', [OrderItemController::class, 'update'])->name('cart.update');
 
 Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
+Route::get('/orders', [OrderController::class, 'index'])->middleware('auth')->name('orders.index');
 
 Route::resource( 'users', UserController::class)->middleware('auth');
+
 
 require __DIR__.'/auth.php';

@@ -11,6 +11,15 @@ use App\Http\Requests\Order\StoreOrderRequest;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $orders = $user->orders()
+            ->with(['orderItems.medicine'])
+            ->latest()
+            ->get();
+        return view('orders.index', compact('orders'));
+    }
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
