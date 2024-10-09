@@ -4,11 +4,10 @@
         ['name' => 'Plugins', 'icon' => 'fa-plug', 'route' => '#', 'roles' => ['admin']],
         ['name' => 'Users', 'icon' => 'fa-users', 'route' => route('users.index'), 'roles' => ['admin']],
         ['name' => 'Orders', 'icon' => 'fa-solid fa-cart-shopping', 'route' => route('orders.index'), 'roles' => ['pharmacist']],
+        ['name' => 'Medicine', 'icon' => 'fa-solid fa-capsules', 'route' => route('medicines.index'), 'roles' => ['admin', 'pharmacist']],
         ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
-
     ];
 @endphp
-
 <div id="wrapper">
     <aside id="sidebar-wrapper">
         <ul class="sidebar-nav h5">
