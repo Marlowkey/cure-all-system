@@ -33,29 +33,9 @@ class OrderController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-
-        if ($user->hasRole('customer')) {
-            $order = $user->orders()
-                ->with(['orderItems.medicine'])
-                ->where('id', $id)
-                ->first();
-
-            if (!$order) {
-                return redirect()->back()->with('error', 'You are not authorized to view this order.');
-            }
-
-        } elseif ($user->hasRole('pharmacist')) {
-            $order = Order::with(['orderItems.medicine'])
-                ->where('id', $id)
-                ->first();
-
-            if (!$order) {
-                return redirect()->back()->with('error', 'Order not found.');
-            }
-
-        } else {
-            return redirect()->back()->with('error', 'Unauthorized access.');
-        }
+        $order = Order::with(['orderItems.medicine'])
+                    ->where('id', $id)
+                    ->firstOrFail();
 
         return view('orders.show', compact('order'));
     }
@@ -114,4 +94,18 @@ class OrderController extends Controller
     {
         return strtoupper(substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, $length));
     }
+
+    public function updateStatus(Request $request, $id)
+{
+    $request->validate([
+        'status' => 'required|string|in:pending,processing,completed,canceled',
+    ]);
+
+    $order = Order::findOrFail($id);
+
+    $order->status = $request->input('status');
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order status updated successfully.');
+}
 }

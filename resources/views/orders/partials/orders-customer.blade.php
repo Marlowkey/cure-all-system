@@ -119,11 +119,14 @@
                             </div>
                         @endforeach
 
-                        <div class="row mb-4">
-                            <div class="col-sm-6">
+                        <div class="row mb-4 d-flex justify-content-center">
+                            <div class="col-sm-3 text-center">
                                 <a href="#" class="btn btn-secondary w-100">Change Address</a>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3 text-center">
+                                <a href="{{ route('orders.show', $order->id)}}" class="btn btn-success w-100">View</a>
+                            </div>
+                            <div class="col-sm-3 text-center">
                                 <a href="#" class="btn btn-danger w-100">Cancel Order</a>
                             </div>
                         </div>

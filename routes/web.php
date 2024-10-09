@@ -39,6 +39,8 @@ Route::patch('/cart/{id}', [OrderItemController::class, 'update'])->name('cart.u
 Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')->name('order.store');
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth')->name('orders.index');
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+Route::put('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+
 
 Route::resource( 'users', UserController::class)->middleware('auth');
 
