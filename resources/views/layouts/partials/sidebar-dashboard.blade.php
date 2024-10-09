@@ -3,8 +3,9 @@
         ['name' => 'Home', 'icon' => 'fa-home', 'route' => route('home'), 'roles' => ['admin', 'pharmacist']],
         ['name' => 'Plugins', 'icon' => 'fa-plug', 'route' => '#', 'roles' => ['admin']],
         ['name' => 'Users', 'icon' => 'fa-users', 'route' => route('users.index'), 'roles' => ['admin']],
-        ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
         ['name' => 'Orders', 'icon' => 'fa-solid fa-cart-shopping', 'route' => route('orders.index'), 'roles' => ['pharmacist']],
+        ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
+
     ];
 @endphp
 

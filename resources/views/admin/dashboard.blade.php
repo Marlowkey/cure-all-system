@@ -1,7 +1,4 @@
-@extends('layouts.app-dashboard')
-@section('sidebar')
-    @include('layouts.partials.sidebar-admin')
-@endsection
+@extends('layouts.app')
 @section('content')
                 <div class="container-fluid">
                     <!-- Page Heading -->

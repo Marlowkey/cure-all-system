@@ -1,7 +1,4 @@
 @extends('layouts.app-dashboard')
-@section('sidebar')
-    @include('layouts.partials.sidebar-pharmacist')
-@endsection
 @section('content')
                 <div class="container-fluid">
                     <!-- Page Heading -->
