@@ -13,7 +13,7 @@ class MedicineController extends Controller
 
     public function index()
     {
-        $medicines = Medicine::simplePaginate(8);
+        $medicines = Medicine::latest()->simplePaginate(8);
         return view('medicines.index', compact('medicines'));
     }
 
@@ -41,7 +41,7 @@ class MedicineController extends Controller
         ]);
 
         if ($request->hasFile('image_path')) {
-            $imagePath = $request->file('image_path')->store('images', 'public');
+            $imagePath = $request->file('image_path')->store('medicines', 'public');
             $validatedData['image_path'] = $imagePath;
         }
         Medicine::create($validatedData);
@@ -89,10 +89,10 @@ class MedicineController extends Controller
         ]);
 
         $medicine = Medicine::find($id);
-        $imagePath = $request->file('user_image')->store('medicines', 'public');
+        $imagePath = $request->file('image_path')->store('medicines', 'public');
         $medicine->image_path = $imagePath;
         $medicine->save();
 
-        return Redirect::route('profile.edit')->with('success', 'Avatar updated');
+        return Redirect::route('medicines.index')->with('success', 'Medicine updated');
     }
 }

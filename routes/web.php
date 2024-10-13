@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('medicines', MedicineController::class);
+Route::post('/medicines/{id}/update-image', [MedicineController::class, 'updateMedicineImage'])->name('medicines.update-image');
+
 Route::get('/search', SearchController::class);
 
 

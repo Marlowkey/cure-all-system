@@ -1,3 +1,9 @@
+<div class="d-flex justify-content-end my-4 ">
+    <a href="{{ route('medicines.create') }}" class="btn btn-sm btn-success">
+        <i class="fa-solid fa-plus"></i> Add Medicine
+    </a>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,8 +20,8 @@
         @foreach($medicines as $medicine)
             <tr>
                 <td>
-                    <img src="{{ $medicine->image_path }}" alt="{{ $medicine->name }}" style="width: 50px; height: 50px;">
-                </td>
+                    <img src="{{ Str::startsWith($medicine->image_path, 'http') ? $medicine->image_path : asset('storage/' . $medicine->image_path) }}"
+                    alt="{{ $medicine->name }}" style="width: 50px; height: 50px;">                </td>
                 <td>{{ $medicine->name }}</td>
                 <td>{{ $medicine->code }}</td>  <!-- Displaying Code -->
                 <td>{{ $medicine->brand }}</td>
@@ -40,3 +46,9 @@
         @endforeach
     </tbody>
 </table>
+
+<nav class="d-flex justify-content-center">
+    <ul class="pagination">
+        {{ $medicines->links() }}
+    </ul>
+</nav>
