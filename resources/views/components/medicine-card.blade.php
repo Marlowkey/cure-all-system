@@ -1,8 +1,10 @@
 @props(['medicine'])
 
 <div class="pro">
-    <a href="">
-        <img src="{{ $medicine->image_path }}" alt="{{ $medicine['name'] }}">
+    <a>
+        <img src="{{ Str::startsWith($medicine->image_path, 'http') ? $medicine->image_path : asset('storage/' . $medicine->image_path) }}"
+             alt="{{ $medicine['name'] }}"
+             class="w-100 h-60 img-fluid">
     </a>
     <div class="des">
         <span>{{ $medicine->brand }}</span>

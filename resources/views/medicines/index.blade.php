@@ -19,6 +19,7 @@
         @foreach ($medicines as $medicine)
             <x-medicine-card :medicine="$medicine" />
         @endforeach
+    </div>
 </section>
 
 
@@ -28,7 +29,6 @@
     </ul>
 </nav>
 @endsection
-    @endsection
     @elseif(auth()->user()->role == 'pharmacist')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <section id="page-header" class="about-header">
