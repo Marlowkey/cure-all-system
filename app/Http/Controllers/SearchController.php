@@ -13,6 +13,6 @@ class SearchController extends Controller
             ->where('name', 'LIKE', '%'.request('q').'%')
             ->paginate(10); // Use paginate instead of get()
 
-        return view('medicine.index', ['medicines' => $medicines]);
+        return view('medicines.index', ['medicines' => $medicines]);
     }
 }

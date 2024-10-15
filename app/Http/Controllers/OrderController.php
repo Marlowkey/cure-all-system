@@ -34,8 +34,8 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $order = Order::with(['orderItems.medicine'])
-                    ->where('id', $id)
-                    ->firstOrFail();
+            ->where('id', $id)
+            ->firstOrFail();
 
         return view('orders.show', compact('order'));
     }
@@ -96,16 +96,17 @@ class OrderController extends Controller
     }
 
     public function updateStatus(Request $request, $id)
-{
-    $request->validate([
-        'status' => 'required|string|in:pending,processing,completed,canceled',
-    ]);
+    {
+        $request->validate([
+            'status' => 'required|string|in:Pending,Processing,Completed,Canceled',
+        ]);
 
-    $order = Order::findOrFail($id);
+        $order = Order::findOrFail($id);
 
-    $order->status = $request->input('status');
-    $order->save();
+        $order->status = $request->input('status');
+        $order->save();
 
-    return redirect()->back()->with('success', 'Order status updated successfully.');
-}
+        return redirect()->route('orders.index')->with('success', 'Order updated successfully!');
+    }
+
 }

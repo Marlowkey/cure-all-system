@@ -124,11 +124,22 @@
                                 <a href="#" class="btn btn-secondary w-100">Change Address</a>
                             </div>
                             <div class="col-sm-3 text-center">
-                                <a href="{{ route('orders.show', $order->id)}}" class="btn btn-success w-100">View</a>
+                                <a href="{{ route('orders.show', $order->id) }}" class="btn btn-success w-100">View</a>
                             </div>
                             <div class="col-sm-3 text-center">
-                                <a href="#" class="btn btn-danger w-100">Cancel Order</a>
+                                <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
+                                    @method('PUT')
+                                    @csrf
+                                    <input type="hidden" name="status" value="canceled">
+                                    <button type="submit" class="btn btn-danger w-100">
+                                        Cancel Order
+                                    </button>
+                                </form>
+
                             </div>
+
+
+
                         </div>
 
                         <div class="map-container mb-4">
@@ -140,4 +151,4 @@
             </div>
         </div>
     </div>
-    @endforeach
+@endforeach
