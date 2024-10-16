@@ -75,9 +75,10 @@
         <div class="form-group">
             <label for="status">Order Status</label>
             <select name="status" id="status" class="form-control">
-                <option value="Pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                <option value="Processing" {{ $order->status == 'processing' ? 'selected' : '' }}>Processing</option>
-                <option value="Completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
+                <option value="For Shipping" {{ $order->status == 'For Shipping' ? 'selected' : '' }}>For Shipping</option>
+                <option value="Completed" {{ $order->status == 'Completed' ? 'selected' : '' }}>Completed</option>
             </select>
         </div>
 
