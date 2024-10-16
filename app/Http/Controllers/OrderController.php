@@ -23,8 +23,18 @@ class OrderController extends Controller
             $orders = Order::with(['orderItems.medicine'])
                 ->latest()
                 ->get();
+        } elseif ($user->hasRole('rider')) {
+            $orders = Order::with(['orderItems.medicine', 'user']) 
+                ->where('rider_id', $user->id)
+                ->latest()
+                ->get();
         } else {
             return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        // if the user's role is 'rider'
+        if ($user->role === 'rider') {
+            return view('rider.orders-rider', compact('orders')); // Return the rider view
         }
 
         return view('orders.index', compact('orders'));
@@ -36,6 +46,11 @@ class OrderController extends Controller
         $order = Order::with(['orderItems.medicine'])
             ->where('id', $id)
             ->firstOrFail();
+
+        // if the user's role is 'rider'
+        if ($user->role === 'rider') {
+            return view('rider.orders-rider-view', compact('order')); // Return the rider view
+        }
 
         return view('orders.show', compact('order'));
     }
@@ -98,7 +113,7 @@ class OrderController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|string|in:Pending,Processing,Completed,Canceled',
+            'status' => 'required|string|in:Pending,Processing,For Shipping,Completed,Canceled',
         ]);
 
         $order = Order::findOrFail($id);
@@ -107,6 +122,21 @@ class OrderController extends Controller
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Order updated successfully!');
+    }
+
+    public function acceptOrder($id)
+    {
+        $user = Auth::user();
+        $order = Order::findOrFail($id);
+
+        if (is_null($order->rider_id)) {
+            $order->rider_id = $user->id;
+            $order->save();
+
+            return redirect()->back()->with('success', 'Order accepted successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Order cannot be accepted.');
     }
 
 }
