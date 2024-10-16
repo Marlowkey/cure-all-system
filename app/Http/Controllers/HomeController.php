@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
             case 'pharmacist':
                 return $this->adminView($user);
             case 'rider':
-                return $this->adminView($user);
+                return $this->riderView($user);
         }
     }
 
@@ -34,5 +35,12 @@ class HomeController extends Controller
     private function pharmacistView($user)
     {
         return view('pharmacist.dashboard');
+    }
+
+    private function riderView($user)
+    {
+        $orders = Order::where('status', 'For Shipping')
+                       ->get();
+        return view('rider.dashboard', ['orders' => $orders]);
     }
 }
