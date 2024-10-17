@@ -1,7 +1,7 @@
 
 <div class="container mt-2">
     <div class="outer-container">
-        <div class="row row-space justify-content-center">
+        <div class="row row-space justify-content-center">     
             <!-- Profile Information Container -->
             <div class="col-md-5 bordered-container profile-container">
                 <h2 class="text-black">Profile Information</h2>

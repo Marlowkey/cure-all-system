@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    <!-- Back Button -->
+   <div class="mb-4">
+        <a href="{{ url()->previous() }}" class="btn btn-outline-secondary  rounded-pill" style="padding: 0.25rem 0.5rem;">
+        <i class="fa-solid fa-arrow-left me-1"></i>Back
+        </a>
+    </div>
     <h1>Create Medicine</h1>
 
     @if ($errors->any())

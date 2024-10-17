@@ -61,11 +61,13 @@
 
             @guest
                 <li><a href="/login">Login</a></li>
-                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+              
             @endguest
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
 
         </ul>
     </div>
+    
 
     <div id="mobile">
         <i id="bar" class="fas fa-outdent"></i>

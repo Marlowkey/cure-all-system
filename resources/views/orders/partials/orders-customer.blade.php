@@ -142,10 +142,7 @@
 
                         </div>
 
-                        <div class="map-container mb-4">
-                            <div id="map" style="height: 400px;" class="w-100"></div>
-                            <!-- Map will render here -->
-                        </div>
+                        
                     </div>
                 </div>
             </div>
