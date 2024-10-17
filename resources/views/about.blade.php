@@ -2,6 +2,9 @@
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Include Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
     <style>
         .social-container {
             margin-bottom: 50px;
@@ -21,18 +24,7 @@
             /* Add some space below the heading */
         }
 
-        .heading {
-            position: absolute;
-            top: -20px;
-            /* Adjust as necessary */
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            /* Ensure background color matches the page */
-            padding: 0 10px;
-            /* Add padding to make the background wider */
-            color: black;
-        }
+        
 
         #team .container {
             border: 5px solid green;
@@ -81,7 +73,54 @@
             font-size: 2.5rem;
             font-weight: bold;
         }
+
+        .custom-heading {
+        font-size: 2.5rem; /* Larger base size for more impact */
+        font-weight: 700; /* Bold for a strong statement */
+        font-family: 'Playfair Display', serif; /* Stylish serif font */
+        color: #2c3e50; /* Dark gray for a sophisticated look */
+        margin-bottom: 25px; /* Adds space below the heading */
+        letter-spacing: 1px; /* More spacing for elegance */
+        line-height: 1.4; /* Better readability */
+        text-transform: capitalize; /* Ensures proper text casing */
+    }
+    
+
+    .heading {
+        font-size: 4vw; /* Responsive font size based on viewport width */
+        color: black;
+        text-align: center; /* Center-align the text */
+    }
+
+    /* Optional: Smaller screens (e.g., phones) */
+    @media (max-width: 768px) {
+        .heading {
+            font-size: 6vw; /* Adjust the size for medium devices */
+        }
+    }
+
+    /* Optional: Extra small screens (e.g., very small phones) */
+    @media (max-width: 576px) {
+        .heading {
+            font-size: 8vw; /* Further reduce size for smaller screens */
+        }
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 576px) {
+        .custom-heading {
+            font-size: 1.8rem; /* Adjusted size for mobile */
+        }
+    }
+
+    /* Media query for small screens (max-width: 576px) */
+    @media (max-width: 412px) {
+        .custom-margin {
+            margin-top: 60px; /* Reduced margin for smaller screens */
+        }
+    }
     </style>
+
     <section id="page-header" class="about-header">
         <h2>Know About Us!</h2>
         <div id="para">
@@ -128,8 +167,7 @@
     <section class="team" id="team">
         <div class="container border-green">
             <h1 class="heading"><span style="color: black;">Our Team</span></h1>
-
-            <div class="row" style="margin-top: 25px;">
+            <div class="row custom-margin" style="margin-top: 25px;">
                 <div class="col-md-4 col-sm-12 box">
                     <!-- Using asset() for image path -->
                     <img src="{{ asset('img/cdhi-logo.png') }}" height="100%" alt="" loading="lazy" />
