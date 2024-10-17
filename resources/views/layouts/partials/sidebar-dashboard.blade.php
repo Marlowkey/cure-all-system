@@ -8,9 +8,20 @@
         ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
     ];
 @endphp
+
 <div id="wrapper">
     <aside id="sidebar-wrapper">
         <ul class="sidebar-nav h5">
+            @auth
+                @if(Auth::user()->role == 'admin')
+                    <li class="sidebar-label">Admin</li>
+                @elseif(Auth::user()->role == 'pharmacist')
+                    <li class="sidebar-label">Pharmacy</li>
+                @elseif(Auth::user()->role == 'rider')
+                    <li class="sidebar-label">Rider</li>
+                @endif
+            @endauth
+
             @foreach($sidebarLinks as $link)
                 @if(Auth::check() && in_array(Auth::user()->role, $link['roles']))
                     <li>
@@ -44,3 +55,23 @@
         </ul>
     </aside>
 </div>
+
+<style>
+    .sidebar-label {
+        font-weight: bold;
+        color: #007bff; /* Bootstrap primary color */
+        margin: 10px 0; /* Add some spacing above and below the label */
+        text-transform: uppercase; /* Make the label uppercase */
+        font-size: 1.1rem; /* Slightly larger font size */
+        letter-spacing: 1px; /* Increase space between letters for readability */
+        border-bottom: 2px solid #007bff; /* Add a bottom border for a polished look */
+        padding-bottom: 5px; /* Space between the text and the border */
+        transition: color 0.3s; /* Smooth transition for color change */
+    }
+
+    .sidebar-label:hover {
+        color: #0056b3; /* Darken the color on hover for interactivity */
+        cursor: pointer; /* Change the cursor to pointer on hover */
+    }
+</style>
+
