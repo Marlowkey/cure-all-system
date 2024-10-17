@@ -130,7 +130,7 @@
                                 <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                    <input type="hidden" name="status" value="canceled">
+                                    <input type="hidden" name="status" value="Canceled">
                                     <button type="submit" class="btn btn-danger w-100">
                                         Cancel Order
                                     </button>
@@ -142,7 +142,7 @@
 
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>

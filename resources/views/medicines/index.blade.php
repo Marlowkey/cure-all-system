@@ -3,7 +3,7 @@
 @section('content')
 
 
-@if (auth()->user()->role == 'customer')
+@if (auth()->guest() || auth()->user()->role == 'customer')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <section id="page-header" class="about-header">
     <h2>Medicine Section</h2>
