@@ -98,25 +98,78 @@
   font-family: 'BarlowMedium', sans-serif;
   font-size: 12px;
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px); /* Slight upward movement */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Return to original position */
+    }
+}
+
+@keyframes lightColorChange {
+    0% { color: #3498db; } /* Start color */
+    50% { color: #1abc9c; } /* Middle color */
+    100% { color: #3498db; } /* End color */
+}
+
+#para h2 {
+    animation: fadeIn 1s ease-in-out, lightColorChange 3s ease-in-out infinite; /* Apply both animations */
+    margin-bottom: 15px; /* Add space below the heading */
+}
+
+/* Media query adjustments */
+@media (max-width: 412px) {
+    #para h2 {
+        font-size: 1.75rem; /* Adjust for smaller screens */
+        margin-bottom: 15px; /* Add space below the heading */
+        animation-duration: 1.2s, 3s; /* Adjust duration for smaller screens */
+    }
+
+    #para p {
+        font-size: 0.9rem; /* Adjust paragraph size */
+        line-height: 1.6; /* Increase line height for better readability */
+        margin-bottom: 15px; /* Add space below the paragraph */
+    }
+
+    .landing-container {
+        padding: 20px; /* Reduce padding for mobile */
+        margin-top: 20px; /* Add top margin to separate from other content */
+    }
+}
+
+
+
+
+
+
+
 </style>
 
 <section class="hero">
     <div class="row justify-content-center align-items-center">
         <!-- Left side: Description -->
         <div class="col-md-7 d-flex justify-content-center align-items-center">
-            <div class="landing-container" id="para">
-                <p class="text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet feugiat lorem, in faucibus
-                    justo. Donec sodales non nisi sit amet maximus. Quisque convallis dolor eget justo tristique, a
-                    feugiat sapien volutpat.
+            <div class="landing-container bg-dark p-4 rounded shadow" id="para">
+                <h2 class="text-primary mb-4 ">Welcome to CureAll!</h2> 
+                <p class="text-white text-justify lead mb-0"> 
+                    Your trusted partner in delivering medicine right to your doorstep. At CureAll, we understand the
+                    importance of timely access to your medications. Our mission is to ensure that you receive your
+                    prescriptions with convenience and care. Whether it's a regular refill or an urgent need, we're here to
+                    help you stay healthy and informed.
                 </p>
             </div>
         </div>
+
         <!-- Right side: Hero Image -->
         <div class="col-md-4 ms-md-2">
             <div id="hero">
             </div>
         </div>
+    </div>
 </section>
 
 
