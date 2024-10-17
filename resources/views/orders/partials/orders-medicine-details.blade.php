@@ -2,17 +2,21 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        .medicine-container {
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      .medicine-container {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center align the content inside the container */
         }
 
         .medicine-image {
-            max-width: 100%;
+            width: 255px; /* Set the width to 100% of the container */
+            height: 250px; /* Fixed height of 500px */
+            object-fit: cover; /* Maintain aspect ratio and cover the area */
             border-radius: 10px;
-            height: auto;
+            display: block; /* Remove inline spacing */
+            margin: 0 auto; /* Center the image */
         }
 
         .price {
@@ -41,8 +45,7 @@
             cursor: pointer;
         }
     </style>
-
-
+    
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
