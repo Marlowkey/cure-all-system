@@ -53,10 +53,10 @@
         }
 
         .team .box img {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-
+            width: 250px;  /* Adjust width */
+            height: auto;  /* Maintain aspect ratio */
+            border-radius: 50%;  /* Optional: Make it circular */
+            margin-bottom: 15px;  /* Space below the image */
         }
 
         .team .box h3 {
@@ -129,11 +129,11 @@
         <div class="container border-green">
             <h1 class="heading"><span style="color: black;">Our Team</span></h1>
 
-            <div class="row">
+            <div class="row" style="margin-top: 25px;">
                 <div class="col-md-4 col-sm-12 box">
                     <!-- Using asset() for image path -->
                     <img src="{{ asset('img/cdhi-logo.png') }}" height="100%" alt="" loading="lazy" />
-                    <h3>Nel Johnsen Alano</h3>
+                    <h3 style="font-size: 1.6rem;">Nel Johnsen Alano</h3>
                     <span>Programmer</span>
                     <div class="share">
                         <a href="#" class="fab fa-facebook-f"></a>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-md-4 col-sm-12 box">
                     <img src="{{ asset('img/cdhi-logo.png') }}" height="100%" alt="" loading="lazy" />
-                    <h3>Kenny Renz A. Caputol</h3>
+                    <h3 style="font-size: 1.6rem;">Kenny Renz A. Caputol</h3>
                     <span>Designer</span>
                     <div class="share">
                         <a href="#" class="fab fa-facebook-f"></a>
@@ -155,7 +155,7 @@
                 </div>
                 <div class="col-md-4 col-sm-12 box">
                     <img src="{{ asset('img/cdhi-logo.png') }}" height="100%" alt="" loading="lazy" />
-                    <h3>Kyle Tristan Antion</h3>
+                    <h3 style="font-size: 1.6rem;">Kyle Tristan Antion</h3>
                     <span>Paper</span>
                     <div class="share">
                         <a href="#" class="fab fa-facebook-f"></a>
