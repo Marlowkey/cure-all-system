@@ -101,7 +101,7 @@ class OrderController extends Controller
         ]);
 
         // Redirect to the tracking page with the order ID
-        return redirect()->route('tracking.show')->with('success', 'Order placed successfully!');
+        return redirect()->route('orders.index')->with('success', 'Order placed successfully!');
 
     }
 
