@@ -9,6 +9,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\OrderAuditTrailController;
 
 Route::get('/', function () {
     $featuredMedicines = Medicine::inRandomOrder()->take(4)->get();
@@ -48,5 +49,6 @@ Route::post('/orders/{order}/accept', [OrderController::class, 'acceptOrder'])->
 
 Route::resource('users', UserController::class)->middleware('auth');
 
+Route::get('/admin/audit-trails', [OrderAuditTrailController::class, 'index'])->name('admin.audit.trails');
 
 require __DIR__ . '/auth.php';

@@ -1,14 +1,13 @@
 @php
     $sidebarLinks = [
         ['name' => 'Home', 'icon' => 'fa-home', 'route' => route('home'), 'roles' => ['admin', 'pharmacist', 'rider']],
-        ['name' => 'Plugins', 'icon' => 'fa-plug', 'route' => '#', 'roles' => ['admin']],
+        ['name' => 'Transaction', 'icon' => 'fa-solid fa-money-bill-transfer', 'route' => route('admin.audit.trails'), 'roles' => ['admin']],
         ['name' => 'Users', 'icon' => 'fa-users', 'route' => route('users.index'), 'roles' => ['admin']],
         ['name' => 'Orders', 'icon' => 'fa-solid fa-cart-shopping', 'route' => route('orders.index'), 'roles' => ['pharmacist', 'rider']],
         ['name' => 'Medicine', 'icon' => 'fa-solid fa-capsules', 'route' => route('medicines.index'), 'roles' => ['pharmacist']],
         ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
     ];
 @endphp
-
 <div id="wrapper">
     <aside id="sidebar-wrapper">
         <ul class="sidebar-nav h5">
