@@ -32,9 +32,9 @@
                     <td>{{ $audit->order_id }}</td>
                     <td>{{ $audit->user->name . ' - ' . ucfirst($audit->user->role) }}</td>
                     <td>{{ ucfirst($audit->action) }}</td>
-                    <td>{{ $audit->old_status }}</td>
-                    <td>{{ $audit->new_status }}</td>
-                    <td>{{ \Carbon\Carbon::parse($audit->created_at)->format('D, M j Y') }}</td>
+                    <td>{{ $audit->old_status ?? '-' }}</td>
+                    <td>{{ $audit->new_status ?? '-'}}</td>
+                    <td>{{ \Carbon\Carbon::parse($audit->created_at)->format('D, M j Y ') }}</td>
                 </tr>
                 @endforeach
             </tbody>
