@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Order Audit Trails</h1>
+    <h1>Order Transactions</h1>
     @if($auditTrails->isEmpty())
     <div class="container mt-4">
         <div class="row justify-content-center">
