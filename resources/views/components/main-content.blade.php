@@ -26,7 +26,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    
+
 /* line 531, styles/_homepage.scss */
 .social-map .container h4.title {
   letter-spacing: .6px;
@@ -140,13 +140,6 @@
         margin-top: 20px; /* Add top margin to separate from other content */
     }
 }
-
-
-
-
-
-
-
 </style>
 
 <section class="hero">
@@ -154,8 +147,8 @@
         <!-- Left side: Description -->
         <div class="col-md-7 d-flex justify-content-center align-items-center">
             <div class="landing-container bg-dark p-4 rounded shadow" id="para">
-                <h2 class="text-primary mb-4 ">Welcome to CureAll!</h2> 
-                <p class="text-white text-justify lead mb-0"> 
+                <h2 class="text-primary mb-4 ">Welcome to CureAll!</h2>
+                <p class="text-white text-justify lead mb-0">
                     Your trusted partner in delivering medicine right to your doorstep. At CureAll, we understand the
                     importance of timely access to your medications. Our mission is to ensure that you receive your
                     prescriptions with convenience and care. Whether it's a regular refill or an urgent need, we're here to
@@ -185,34 +178,9 @@
     <p>Available</p>
     <div class="pro-container">
 
-        <div class="pro">
-            <a href="{{ asset('WEB/assets2/sproduct.php?productId=16') }}">
-                <img src="{{ asset('img/losartan.jpg') }}" alt="none">
-            </a>
-            <div class="des">
-                <span>Brand Name</span>
-                <h4>Medicine Name</h4>
-                <h4 id="productPrice">₱160</h4>
-            </div>
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping"
-                    onclick="addToCart('16', 'Fuel Pumps', 160,1, 160, '{{ asset('img/image1.jpg') }}');"></i>
-            </div>
-        </div>
-
-        <div class="pro">
-            <a href="{{ asset('/product.php?productId=16') }}">
-                <img src="{{ asset('img/losartan.jpg') }}" alt="none">
-            </a>
-            <div class="des">
-                <span>Brand Name</span>
-                <h4>Medicine Name</h4>
-                <h4 id="productPrice">₱160</h4>
-            </div>
-            <div class="cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-        </div>
+        @foreach ($featuredMedicines as $medicine)
+            <x-medicine-card :medicine="$medicine" />
+        @endforeach
     </div>
 </section>
 

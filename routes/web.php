@@ -11,7 +11,8 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderItemController;
 
 Route::get('/', function () {
-    return view('welcome');
+    $featuredMedicines = Medicine::inRandomOrder()->take(4)->get();
+    return view('welcome', compact('featuredMedicines'));
 });
 
 Route::get('/about', function () {
@@ -45,7 +46,7 @@ Route::put('/orders/{id}/update-status', [OrderController::class, 'updateStatus'
 Route::post('/orders/{order}/accept', [OrderController::class, 'acceptOrder'])->name('orders.accept');
 
 
-Route::resource( 'users', UserController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

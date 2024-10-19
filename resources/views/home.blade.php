@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <x-main-content />
+
+@include('components.main-content', ['featuredMedicines' => $featuredMedicines])
+
 @endsection

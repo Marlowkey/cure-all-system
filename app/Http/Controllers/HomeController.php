@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Medicine;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,9 @@ class HomeController extends Controller
 
     private function customerView($user)
     {
-        return view('home');
+        $featuredMedicines = Medicine::inRandomOrder()->take(4)->get();
+
+        return view('home', compact( 'featuredMedicines'));
     }
 
     private function adminView($user)
