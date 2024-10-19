@@ -27,7 +27,12 @@
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mb-md-0">
                 <h4 class="text-uppercase mb-4">About</h4>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> History</a></li>
+                <li class="mb-2">
+                    <a href="{{ route('history.index') }}" class="text-white">
+                        <i class="fas fa-info-circle"></i> History
+                    </a>
+                </li>
+
                     <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> Vision and Mission</a></li>
                     <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> Objectives and Core Values</a></li>
                     <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> Directors and Unit Managers</a></li>
@@ -40,6 +45,7 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mb-md-0">
                 <h4 class="text-uppercase mb-4">Animals</h4>
+                
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> Reviews and Testimonials</a></li>
                     <li class="mb-2"><a href="#!" class="text-white"><i class="fas fa-info-circle"></i> News &amp; Blog</a></li>

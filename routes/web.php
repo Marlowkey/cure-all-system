@@ -10,6 +10,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\OrderAuditTrailController;
+use App\Http\Controllers\HistoryController;
+
 
 Route::get('/', function () {
     $featuredMedicines = Medicine::inRandomOrder()->take(4)->get();
@@ -45,6 +47,8 @@ Route::get('/orders', [OrderController::class, 'index'])->middleware('auth')->na
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 Route::put('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 Route::post('/orders/{order}/accept', [OrderController::class, 'acceptOrder'])->name('orders.accept');
+
+Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
 
 
 Route::resource('users', UserController::class)->middleware('auth');
