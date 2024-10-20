@@ -8,7 +8,7 @@ class HistoryController extends Controller
 {
     public function index()
 {
-    return view('layouts.partials.history'); // Update this line
+    return view('layouts.partials.history'); 
 }
 
 
