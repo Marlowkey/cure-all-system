@@ -15,13 +15,13 @@
                     <div class="container mt-4">
                         <h3>Orders</h3>
                         <table class="table table-striped">
-                            <thead>
+                            <thead class="bg-primary text-white">
                                 <tr>
                                     <th>Order ID</th>
                                     <th>Customer Name</th>
-                                    <th>Order Date</th>
-                                    <th>Order Items</th>
-                                    <th>Total Price</th>
+                                    <th>Order Date</th> 
+                                    <th>Order Items</th> 
+                                    <th>Total Price</th> 
                                     <th>Payment Method</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -51,12 +51,13 @@
                                         <td>{{ $order->payment_method }}</td>
                                         <td>{{ $order->status }}</td>
                                         <td>
-                                            <a href="{{route('orders.show', $order->id)}}" class="btn btn-primary btn-sm">View</a>
+                                            <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-sm">View</a>
                                         </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
+                                @endforeach 
+                            </tbody> 
                         </table>
+
                     </div>
 
                 </div>
