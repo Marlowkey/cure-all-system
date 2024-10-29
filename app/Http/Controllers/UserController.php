@@ -72,6 +72,8 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+        $user = User::findOrFail($id); // Fetch user by ID or fail if not found
+        return view('users.show', compact('user')); // Return view with user dat
     }
 
     /**
@@ -80,14 +82,55 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id); // Retrieve the user by ID
+        return view('users.edit', compact('user')); // Return the edit view
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Debugging: Log the incoming request
+        \Log::info('Update User Request:', $request->all());
+    
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed',
+            'contact_num' => 'nullable|string|max:15',
+            'street' => 'nullable|string|max:255',
+            'barangay' => 'nullable|string|max:255',
+            'municipality' => 'nullable|string|max:255',
+            'role' => 'required|in:customer,pharmacist,rider,admin',
+        ]);
+    
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+    
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
+    
+        $user->contact_num = $request->contact_num;
+        $user->street = $request->street;
+        $user->barangay = $request->barangay;
+        $user->municipality = $request->municipality;
+    
+        
+        \Log::info('User Role Before Save:', [$user->role, $request->role]);
+        
+        $user->role = $request->role;
+    
+        // Attempt to save the updated user
+        try {
+            $user->save();
+            return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        } catch (\Exception $e) {
+            \Log::error('Error updating user:', ['error' => $e->getMessage()]);
+            return back()->withErrors('Error updating user.');
+        }
     }
 
     /**

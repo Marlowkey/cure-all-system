@@ -49,7 +49,9 @@ Route::put('/orders/{id}/update-status', [OrderController::class, 'updateStatus'
 Route::post('/orders/{order}/accept', [OrderController::class, 'acceptOrder'])->name('orders.accept');
 
 Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
-
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::get('/users/{id/show ', [UserController::class, 'show'])->name('users.show');
 
 Route::resource('users', UserController::class)->middleware('auth');
 
