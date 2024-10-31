@@ -896,6 +896,8 @@ footer {
     margin-right: 8px;
 }
 
+
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     /* Adjust the max-width as needed for your target screen size */
