@@ -6,7 +6,7 @@
             <form action="/search" method="GET" class="row g-2">
                 <div class="col-12 col-md-12 col-lg-12 mx-auto">
                     <div class="input-group">
-                        <input type="search" class="form-control w-auto" name="q" placeholder="Losartan..." />
+                        <input type="search" class="form-control w-auto" name="q" placeholder="Search..." />
                         <span class="input-group-text">
                             <i class="fas fa-search"></i>
                         </span>
