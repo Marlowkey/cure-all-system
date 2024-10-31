@@ -35,6 +35,7 @@
 <!-- Mapbox JS and Initialization Script -->
 <!-- <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script> -->
+<!-- caputol -->
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
