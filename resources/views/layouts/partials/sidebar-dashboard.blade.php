@@ -5,7 +5,7 @@
         ['name' => 'Users', 'icon' => 'fa-users', 'route' => route('users.index'), 'roles' => ['admin']],
         ['name' => 'Orders', 'icon' => 'fa-solid fa-cart-shopping', 'route' => route('orders.index'), 'roles' => ['pharmacist', 'rider']],
         ['name' => 'Medicine', 'icon' => 'fa-solid fa-capsules', 'route' => route('medicines.index'), 'roles' => ['pharmacist']],
-        ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist']],
+        ['name' => 'Profile', 'icon' => 'fa-user', 'route' => '/profile', 'roles' => ['admin', 'pharmacist', 'rider']],
     ];
 @endphp
 <div id="wrapper">
@@ -24,7 +24,7 @@
             @foreach($sidebarLinks as $link)
                 @if(Auth::check() && in_array(Auth::user()->role, $link['roles']))
                     <li>
-                        <a href="{{ $link['route'] }}">
+                        <a href="{{ $link['route'] }}" class="{{ request()->is($link['route']) ? 'active' : '' }}">
                             <i class="fa {{ $link['icon'] }} text-secondary"></i>{{ $link['name'] }}
                         </a>
                     </li>
@@ -55,6 +55,7 @@
     </aside>
 </div>
 
+
 <style>
     .sidebar-label {
         font-weight: bold;
@@ -68,9 +69,9 @@
         transition: color 0.3s; /* Smooth transition for color change */
     }
 
-    .sidebar-label:hover {
-        color: #0056b3; /* Darken the color on hover for interactivity */
-        cursor: pointer; /* Change the cursor to pointer on hover */
+    .sidebar-nav a.active {
+        background-color: #007bff; /* Background color for active link */
+        color: #fff; /* Text color for active link */
     }
 </style>
 

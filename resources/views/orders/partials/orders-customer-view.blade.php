@@ -79,6 +79,40 @@
         </div>
     </div>
 
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Order Placed</h3>
+                    <p class="text-center text-muted">Estimated delivery: {{ session('estimated_delivery') }}</p>
+
+                    <!-- Progress indicator for delivery -->
+                    <div class="progress-tracker mb-4">
+                        <ul class="progress-indicator d-flex justify-content-between list-unstyled">
+                            <li class="step completed">
+                                <span class="icon">📦</span>
+                                <p>Order Placed</p>
+                            </li>
+                            <li class="step active">
+                                <span class="icon">🚚</span>
+                                <p>In Transit</p>
+                            </li>
+                            <li class="step">
+                                <span class="icon">🏠</span>
+                                <p>Out for Delivery</p>
+                            </li>
+                            <li class="step">
+                                <span class="icon">✅</span>
+                                <p>Delivered</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Map -->
     <h5 class="text-muted mb-3">Delivery Tracking</h5>
     <div class="map-container mb-4">

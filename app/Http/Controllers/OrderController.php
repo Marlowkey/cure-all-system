@@ -58,20 +58,25 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $user = Auth::user();
-
+    
+        // Retrieve all items in the user's cart that are associated with a medicine
         $orderItems = $user->orderItems()->with('medicine')->get();
-
+    
+        // Check if the cart is empty
         if ($orderItems->isEmpty()) {
             return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
         }
-
+    
+        // Generate a unique reference number
         $referenceNum = $this->generateReferenceNumber();
-
+    
+        // Handle prescription image upload
         $prescriptionImagePath = null;
         if ($request->hasFile('prescription_image')) {
             $prescriptionImagePath = $request->file('prescription_image')->store('prescriptions', 'public');
         }
-
+    
+        // Create the order in the database
         $order = Order::create([
             'reference_num' => $referenceNum,
             'user_id' => $user->id,
@@ -82,7 +87,8 @@ class OrderController extends Controller
             'latitude' => $request->latitude,
             'prescription_image' => $prescriptionImagePath,
         ]);
-
+    
+        // Add each item to the OrderItemPlaced table
         foreach ($orderItems as $orderItem) {
             OrderItemPlaced::create([
                 'order_id' => $order->id,
@@ -92,17 +98,19 @@ class OrderController extends Controller
                 'price' => $orderItem->price,
             ]);
         }
-
-
+    
+        // Clear the user's cart after order placement
+        $user->orderItems()->delete();
+    
+        // Save order details to the session
         session([
             'order_id' => $order->id,
             'order_total' => $order->total,
             'estimated_delivery' => 'Aug 28 – Aug 30', // Example date, adjust accordingly
         ]);
-
-        // Redirect to the tracking page with the order ID
+    
+        // Redirect to the orders page with a success message
         return redirect()->route('orders.index')->with('success', 'Order placed successfully!');
-
     }
 
     private function generateReferenceNumber($length = 10)
@@ -123,6 +131,8 @@ class OrderController extends Controller
 
         return redirect()->route('orders.index')->with('success', 'Order updated successfully!');
     }
+
+    
 
     public function acceptOrder($id)
     {
