@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container mt-4">
+        <!-- Back Button -->
+    <div class="mb-4">
+        <a href="{{ url()->previous() }}" class="btn btn-outline-secondary  rounded-pill" style="padding: 0.25rem 0.5rem;">
+        <i class="fa-solid fa-arrow-left me-1"></i>Back
+        </a>
+    </div>
         <h3 class="text-center mb-4">Order Details</h3>
 
         <div class="d-flex flex-column flex-md-row justify-content-between mb-4">
