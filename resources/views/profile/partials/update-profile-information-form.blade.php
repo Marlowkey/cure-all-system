@@ -101,9 +101,9 @@
 
                 <div class="card mt-4">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">User Location</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Map Location</h6>
                         <div id="map" style="width: 100%; height: 250px; border-radius: 8px;"></div>
-                        <button id="locateButton" class="btn btn-primary mt-2">Locate Me</button>
+                        <button id="locateButton" class="btn btn-primary mt-2">Find my Location</button>
                     </div>
                 </div>
 
@@ -135,12 +135,23 @@
     document.addEventListener("DOMContentLoaded", function() {
         mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
 
+        const userLatitude = "{{ $user->latitude ?? '0' }}";
+        const userLongitude = "{{ $user->longitude ?? '0' }}";
+
+
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v12',
-            center: [-24, 42], // Customize this based on user data or use default
-            zoom: 10
+            center: [userLongitude, userLatitude],
+            zoom: 14.5
         });
+
+        // Add a marker for the user's current location
+        if (userLatitude && userLongitude) {
+            new mapboxgl.Marker()
+                .setLngLat([userLongitude, userLatitude])
+                .addTo(map);
+        }
 
         // Initialize the Geolocate Control
         const geolocateControl = new mapboxgl.GeolocateControl({
@@ -153,6 +164,10 @@
 
         map.addControl(geolocateControl);
 
+        window.addEventListener('resize', () => {
+            map.resize();
+
+        });
         // Load event for the map
         map.on('load', function() {
             // Example GeoJSON data
