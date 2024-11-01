@@ -22,10 +22,8 @@ return new class extends Migration
             $table->string('valid_id_num', 50)->nullable();
             $table->string('valid_id_image')->nullable();
             $table->string('valid_id_type', 50)->nullable();
-
-            // New columns for latitude and longitude
-            $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
+            $table->decimal('latitude', 10, 7)->nullable();
         });
     }
 
@@ -46,8 +44,8 @@ return new class extends Migration
                 'valid_id_num',
                 'valid_id_image',
                 'valid_id_type',
-                'latitude',
-                'longitude' // Drop these if rolling back
+                'longitude',
+                'latitude'
             ]);
         });
     }

@@ -62,30 +62,4 @@
             <x-table-users :users="$users" /> <!-- Assuming each user entry in the component has a mini map -->
         </div>
     </div>
-
-<!-- Mapbox JS and Initialization Script for index.blade.php -->
-<!-- <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script> -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
-
-
-        // Initialize a map for each user row, assuming a 'map' div in each row
-        document.querySelectorAll('.user-map').forEach((element, index) => {
-            const map = new mapboxgl.Map({
-                container: element.id,
-                style: 'mapbox://styles/mapbox/streets-v12',
-                center: [-24, 42], // Customize this per user entry
-                zoom: 5
-            });
-
-            map.addControl(new mapboxgl.GeolocateControl({
-                positionOptions: { enableHighAccuracy: true },
-                trackUserLocation: true,
-                showUserHeading: true
-            }));
-        });
-    });
-</script>
 @endsection

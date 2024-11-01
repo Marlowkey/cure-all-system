@@ -23,6 +23,8 @@ class ProfileUpdateRequest extends FormRequest
             'street' => ['required', 'string', 'max:255'],
             'barangay' => ['required', 'string', 'max:255'],
             'municipality' => ['required', 'string', 'max:255'],
+            'longitude' => ['nullable', 'numeric'], // Add validation for longitude
+            'latitude' => ['nullable', 'numeric'],  // Add validation for latitude
         ];
     }
 }

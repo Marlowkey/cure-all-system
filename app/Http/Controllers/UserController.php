@@ -61,8 +61,8 @@ class UserController extends Controller
             'barangay' => 'nullable|string|max:255',
             'municipality' => 'nullable|string|max:255',
             'role' => 'required|string|in:customer,pharmacist,rider,admin',
-            'latitude' => 'nullable|numeric', // New validation for latitude
-            'longitude' => 'nullable|numeric' // New validation for longitude
+            'longitude' => 'nullable|numeric', // New validation for longitude
+            'latitude' => 'nullable|numeric' // New validation for latitude
         ]);
 
         // Include latitude and longitude in the user creation array
@@ -75,8 +75,8 @@ class UserController extends Controller
             'barangay' => $validated['barangay'],
             'municipality' => $validated['municipality'],
             'role' => $validated['role'],
-            'latitude' => $request->latitude, // Save latitude
-            'longitude' => $request->longitude // Save longitude
+            'longitude' => $request->longitude, // Save longitude
+            'latitude' => $request->latitude // Save latitude
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully with location data.');
@@ -109,6 +109,8 @@ class UserController extends Controller
     {
         // Debugging: Log the incoming request
         Log::info('Update User Request:', $request->all());
+        Log::info('User Location Before Save:', ['latitude' => $user->latitude, 'longitude' => $user->longitude]);
+
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -119,11 +121,15 @@ class UserController extends Controller
             'barangay' => 'nullable|string|max:255',
             'municipality' => 'nullable|string|max:255',
             'role' => 'required|in:customer,pharmacist,rider,admin',
+            'longitude' => 'nullable|numeric', // Add validation for longitude
+            'latitude' => 'nullable|numeric',  // Add validation for latitude
         ]);
-
+        
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->longitude = $request->longitude; // Save longitude
+        $user->latitude = $request->latitude;  // Save latitude
 
         if ($request->filled('password')) {
             $user->password = bcrypt($request->password);
@@ -134,10 +140,18 @@ class UserController extends Controller
         $user->barangay = $request->barangay;
         $user->municipality = $request->municipality;
 
-
         Log::info('User Role Before Save:', [$user->role, $request->role]);
 
         $user->role = $request->role;
+
+        try {
+            $user->save();
+            return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        } catch (\Exception $e) {
+            Log::error('Error updating user:', ['error' => $e->getMessage()]);
+            return back()->withErrors('Error updating user.');
+        }
+        
 
         // Attempt to save the updated user
         try {
