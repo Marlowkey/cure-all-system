@@ -15,7 +15,7 @@
         
         <!-- Responsive Table for larger screens -->
         <div class="table-responsive d-none d-md-block">
-            <table class="table table-hover">
+            <table class="table table-hover table-bordered">
                 <thead class="table-primary">
                     <tr class="text-white">
                         <th>Order ID</th>

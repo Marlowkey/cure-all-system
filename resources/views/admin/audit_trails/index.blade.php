@@ -18,7 +18,7 @@
         <div class="d-none d-lg-block">
             <div class="card mb-3">
                 <div class="card-body">
-                    <table class="table table-hover"> 
+                    <table class="table table-hover table-bordered"> 
                         <thead class="table-primary">
                             <tr>
                                 <th>Order ID</th> 

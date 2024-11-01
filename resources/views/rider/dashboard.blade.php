@@ -19,7 +19,7 @@
 
                 <!-- Table layout for medium and larger screens -->
                 <div class="table-responsive" id="mainTable">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <thead class="table-primary">
                             <tr>
                                 <th>Order ID</th>
