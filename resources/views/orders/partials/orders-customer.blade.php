@@ -50,11 +50,14 @@
 <div class="container mt-4">
     <div class="card shadow-sm"> 
         <div class="card-body"> 
+            <!-- Heading for All Orders -->
+            <h2 class="text-center mb-4">All Orders</h2> <!-- Added heading -->
+
             <!-- Table layout for medium and larger screens --> 
             <div class="table-responsive d-none d-md-block" id="mainTable">
-                <table class="table table-bordered">
-                    <thead class="table-primary">
-                        <tr>
+                <table class="table table-bordered"> 
+                    <thead class="table-primary"> 
+                        <tr> 
                             <th>Order ID</th>
                             <th>Delivery Rider</th>
                             <th>Shipping Address</th>
@@ -126,7 +129,7 @@
                             'quantity' => $items->sum('quantity'),
                         ]);
                     @endphp
-                    <div class="order-card">
+                    <div class="order-card mb-4 p-3 border rounded shadow-sm"> <!-- Added padding and shadow -->
                         <h5>Order ID: {{ $order->id }}</h5>
                         <p><strong>Delivery Rider:</strong> {{ $order->deliveryRider->name ?? 'N/A' }}</p>
                         <p><strong>Shipping Address:</strong></p>
@@ -163,8 +166,9 @@
                 @endforelse  
             </div> 
         </div>   
-    </div>        
+    </div>         
 </div>
+
 
 <script>
     // JavaScript to ensure only one layout shows at a time
