@@ -8,6 +8,33 @@
             <i class="fa-solid fa-arrow-left me-1"></i> Back
         </a>
     </div>
+    <h3 class="text-primary mb-4">Order Details</h3>
+    <!-- Order Information -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h5 class="text-muted mb-3">Order Information</h5>
+            <div class="bg-light p-3 rounded shadow-sm">
+                <div class="d-flex flex-column flex-md-row align-items-start">
+                    <div class="mb-2 mb-md-0 me-md-4">
+                        <strong>Order ID:</strong> <span>{{ $order->id }}</span>
+                    </div>
+                    <div class="mb-2 mb-md-0 me-md-4">
+                        <strong>Order Date:</strong> <span>{{ $order->created_at->format('Y-m-d') }}</span>
+                    </div>
+                    <div class="mb-2 mb-md-0 me-md-4">
+                        <strong>Total Price:</strong> <span>₱{{ $order->total }}</span>
+                    </div>
+                    <div class="mb-2 mb-md-0 me-md-4">
+                        <strong>Payment Method:</strong> <span>{{ $order->payment_method }}</span>
+                    </div>
+                    <div>
+                        <strong>Status:</strong>
+                        <span class="badge bg-info text-dark">{{ ucfirst($order->status) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Card Wrapper -->
     <div class="card shadow-lg">
@@ -88,11 +115,10 @@
                 </div>
             </div>
 
-            <!-- Update Order Status -->
-            <h5 class="text-muted mb-3">Update Order Status</h5>
-            <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
-                @csrf
-                @method('PUT')
+    {{-- <h5>Update Order Status</h5>
+    <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
+        @csrf
+        @method('PUT')
 
                 <div class="form-group mb-3">
                     <label for="status">Order Status</label>
@@ -104,9 +130,8 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-success rounded-pill px-4 shadow-sm">Update Status</button>
-            </form>
-        </div>
-    </div>
+        <button type="submit" class="btn btn-success mt-3">Update Status</button>
+    </form> --}}
+
 </div>
 @endsection
