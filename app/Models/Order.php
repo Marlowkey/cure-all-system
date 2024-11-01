@@ -15,6 +15,19 @@ class Order extends Model
     protected $guarded = [];
     use HasFactory;
 
+    const STATUS_PENDING = 'pending';
+    const STATUS_TO_BE_SHIPPED = 'to_be_shipped';
+    const STATUS_ON_THE_WAY = 'on_the_way';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_COMPLETED_CONFIRMED = 'completed_confirmed';
+    const STATUS_DECLINED = 'declined';
+    const STATUS_CANCELED = 'canceled';
+
+
+    public function getFormattedStatusAttribute()
+    {
+        return ucfirst(str_replace('_', ' ', $this->status));
+    }
     protected static function booted()
     {
         static::created(function ($order) {
@@ -55,5 +68,10 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function rider()
+    {
+        return $this->belongsTo(User::class, 'rider_id')->where('role', 'rider');
     }
 }

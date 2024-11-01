@@ -42,7 +42,7 @@ class HomeController extends Controller
 
     private function riderView($user)
     {
-        $orders = Order::where('status', 'For Shipping')
+        $orders = Order::where('status', Order::STATUS_TO_BE_SHIPPED)
                        ->get();
         return view('rider.dashboard', ['orders' => $orders]);
     }
