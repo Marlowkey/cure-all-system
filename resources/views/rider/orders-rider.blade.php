@@ -66,72 +66,103 @@
             </div>
         </div>
     @else
-        @foreach ($orders as $order)
-            <div class="container mt-4">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10 col-sm-12">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h3 class="card-title text-center">Delivery</h3>
-                                <p class="text-center text-muted">Estimated delivery: {{ session('estimated_delivery') }}</p>
-
-                                <!-- Progress indicator for delivery -->
-                                <div class="progress-tracker mb-4">
-                                    <ul class="progress-indicator d-flex justify-content-between list-unstyled">
-                                        <li class="step completed">
-                                            <span class="icon">📦</span>
-                                            <p>Order Placed</p>
-                                        </li>
-                                        <li class="step active">
-                                            <span class="icon">🚚</span>
-                                            <p>In Transit</p>
-                                        </li>
-                                        <li class="step">
-                                            <span class="icon">🏠</span>
-                                            <p>Out for Delivery</p>
-                                        </li>
-                                        <li class="step">
-                                            <span class="icon">✅</span>
-                                            <p>Delivered</p>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5>Shipping Address</h5>
-                                        <p><strong>{{ auth()->user()->name }}</strong></p>
-                                        <p>
-                                            {{ $order->user->street ?? 'N/A' }}<br>
-                                            {{ $order->user->barangay ?? 'N/A' }}<br>
-                                            {{ $order->user->municipality ?? 'N/A' }}
-                                        </p>
-                                        <p>Contact: {{ $order->user->contact_num ?? 'N/A' }}</p>
-                                    </div>
-                                </div>
-
-                                @foreach ($order->orderItems as $item)
-                                    <div class="card mb-4">
-                                        <div class="card-body d-flex">
-                                            <img src="{{ $item->medicine->image_path }}" alt="Product Image"
-                                                style="width: 100px; height: auto;" class="img-thumbnail me-3" />
-                                            <div>
-                                                <span>{{ $item->medicine->brand }}</span>
-                                                <h4>{{ $item->medicine->name }}</h4>
-                                                <h4 id="productPrice">₱{{ $item->medicine->price }}</h4>
-                                            </div>
+    <div class="container mt-4">
+        <h3>Assigned Orders</h3>
+        <table class="table table-striped">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Order Items</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->user->name }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <!-- Loop through each order item -->
+                            @foreach ($order->orderItems as $item)
+                                <div class="card mb-2">
+                                    <div class="card-body d-flex">
+                                        <div>
+                                            <span>{{ $item->medicine->brand }}</span><br>
+                                            <span>{{ $item->medicine->name }}</span><br>
+                                            <span>₱{{ $item->medicine->price }}</span>
                                         </div>
                                     </div>
-                                @endforeach
-
-                                <div class="map-container mb-4">
-                                    <div id="map" style="height: 400px;" class="w-100"></div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
+                            @endforeach
+                        </td>
+                        <td>₱{{ $order->total }}</td>
+                        <td>{{ $order->payment_method }}</td>
+                        <td>{{ $order->formatted_status }}</td>
+                        <td>
+                            <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-sm">View</a>
+                            @if ($order->status === \App\Models\Order::STATUS_ON_THE_WAY)
+                            <form action="{{ route('orders.rider.complete', $order->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                            </form>
+                        @else
+                        @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @endif
+
+    @if(!$completedOrders->isEmpty())
+    <div class="container mt-4">
+        <h3>Completed Orders</h3>
+        <table class="table table-striped">
+            <thead class="bg-success text-white">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Order Items</th>
+                    <th>Total Price</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($completedOrders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->user->name }}</td>
+                        <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                        <td>
+                            <!-- Loop through each completed order item -->
+                            @foreach ($order->orderItems as $item)
+                                <div class="card mb-2">
+                                    <div class="card-body d-flex">
+                                        <div>
+                                            <span>{{ $item->medicine->brand }}</span><br>
+                                            <span>{{ $item->medicine->name }}</span><br>
+                                            <span>₱{{ $item->medicine->price }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </td>
+                        <td>₱{{ $order->total }}</td>
+                        <td>{{ $order->payment_method }}</td>
+                        <td>{{ $order->formatted_status }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endif
 @endsection

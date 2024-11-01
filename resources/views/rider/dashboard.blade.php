@@ -19,9 +19,9 @@
                                 <tr>
                                     <th>Order ID</th>
                                     <th>Customer Name</th>
-                                    <th>Order Date</th> 
-                                    <th>Order Items</th> 
-                                    <th>Total Price</th> 
+                                    <th>Order Date</th>
+                                    <th>Order Items</th>
+                                    <th>Total Price</th>
                                     <th>Payment Method</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -49,16 +49,25 @@
                                         </td>
                                         <td>₱{{ $order->total }}</td>
                                         <td>{{ $order->payment_method }}</td>
-                                        <td>{{ $order->status }}</td>
+                                        <td>{{ $order->formatted_status }}</td>
                                         <td>
                                             <a href="{{ route('orders.show', $order->id) }}" class="btn btn-primary btn-sm">View</a>
+                                            @if ($order->status === \App\Models\Order::STATUS_TO_BE_SHIPPED)
+                                            <form action="{{ route('orders.rider.accept', $order->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                                            </form>
+                                            <form action="{{ route('orders.rider.decline', $order->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">Decline</button>
+                                            </form>
+                                        @else
+                                        @endif
                                         </td>
                                     </tr>
-                                @endforeach 
-                            </tbody> 
+                                @endforeach
+                            </tbody>
                         </table>
-
                     </div>
-
                 </div>
 @endsection

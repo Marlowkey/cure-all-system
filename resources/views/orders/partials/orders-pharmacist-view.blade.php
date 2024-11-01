@@ -25,7 +25,7 @@
                         <strong>Payment Method:</strong> <span>{{ $order->payment_method }}</span>
                     </div>
                     <div>
-                        <strong>Status:</strong> 
+                        <strong>Status:</strong>
                         <span class="badge bg-info text-dark">{{ ucfirst($order->status) }}</span>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <h5>Update Order Status</h5>
+    {{-- <h5>Update Order Status</h5>
     <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -94,6 +94,6 @@
         </div>
 
         <button type="submit" class="btn btn-success mt-3">Update Status</button>
-    </form>
+    </form> --}}
 
 </div>

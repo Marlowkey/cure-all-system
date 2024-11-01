@@ -46,7 +46,15 @@ Route::post('/checkout', [OrderController::class, 'store'])->middleware('auth')-
 Route::get('/orders', [OrderController::class, 'index'])->middleware('auth')->name('orders.index');
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 Route::put('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
-Route::post('/orders/{order}/accept', [OrderController::class, 'acceptOrder'])->name('orders.accept');
+
+
+Route::post('/orders/{orderId}/accept', [OrderController::class, 'acceptOrder'])->name('orders.accept');
+Route::post('/orders/{orderId}/decline', [OrderController::class, 'declineOrder'])->name('orders.decline');
+
+Route::post('/orders/{order}/rider/accept', [OrderController::class, 'acceptRiderOrder'])->name('orders.rider.accept');
+Route::post('/orders/{order}/rider/decline', [OrderController::class, 'declineRiderOrder'])->name('orders.rider.decline');
+Route::post('/orders/{order}/rider/complete', [OrderController::class, 'completeRiderOrder'])->name('orders.rider.complete');
+
 
 Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
