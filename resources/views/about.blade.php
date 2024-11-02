@@ -49,11 +49,19 @@
             transform: translateY(-5px); /* Lift effect on hover */
         }
 
+        
         .team .box img {
             width: 150px; /* Adjusted width for uniformity */
-            height: auto;
+            height: 150px; /* Ensures height matches width for a perfect circle */
             border-radius: 50%;
             margin-bottom: 15px;
+            border: 5px solid #0056b3; /* Adds a circular border outline */
+            padding: 5px; /* Optional padding to enhance the border */
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .team .box img:hover {
+            transform: scale(1.1); /* Zoom-in effect on hover */
         }
 
         .team .box h3 {
@@ -170,7 +178,10 @@
     <!-- Our Team Section -->
     <section class="team" id="team">
         <div class="container border-green">
-            <h1 class="heading" style="margin-top: -20px;"><span style="color: black;">Our Team</span></h1>
+        <h1 class="heading" style="margin-top: -20px;  padding: 15px; border-radius: 10px;">
+            <span style="color: black;">Our Team</span>
+        </h1>
+
             <div class="row">
                 <div class="col-md-4 col-sm-12 box mb-4"> <!-- Adjusted class names -->
                     <img src="{{ asset('img/sen.jpg') }}" height="80%" alt="" loading="lazy" />
