@@ -91,14 +91,7 @@
                     @enderror
                 </div>
 
-                <!-- Mapbox Map Container -->
-                <!-- <div class="card mt-4">
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">User Location</h6>
-                        <div id="map" style="width: 100%; height: 250px; border-radius: 8px;"></div>
-                    </div>
-                </div> -->
-
+                <!-- Map Container -->
                 <div class="card mt-4">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">Map Location</h6>
@@ -107,12 +100,18 @@
                     </div>
                 </div>
 
-                <!-- Add hidden inputs for latitude and longitude -->
-                <input type="text" id="longitude" name="longitude" value="{{ old('longitude', $user->longitude) }}" hidden>
-                <input type="text" id="latitude" name="latitude" value="{{ old('latitude', $user->latitude) }}" hidden>
-
-
+                <!-- Latitude and Longitude Text Fields -->
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" value="{{ old('latitude', $user->latitude) }}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" value="{{ old('longitude', $user->longitude) }}" readonly>
+                </div>
             </div>
+
+
         </div>
         <div class="form-buttons text-center mt-3">
             <button type="submit" class="btn btn-success">Save</button>
@@ -132,6 +131,29 @@
 <!-- caputol -->
 
 <script>
+
+    document.getElementById("locateButton").addEventListener("click", function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    // Get latitude and longitude
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Set values in the text fields
+                    document.getElementById("latitude").value = latitude;
+                    document.getElementById("longitude").value = longitude;
+
+                    // You can also update the map location here if needed
+                    // Example:
+                    // map.setView([latitude, longitude], 13);
+                }, function (error) {
+                    console.error("Error getting location: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+
     document.addEventListener("DOMContentLoaded", function() {
         mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
 
