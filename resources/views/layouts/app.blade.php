@@ -12,7 +12,7 @@
 
 
 
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -276,32 +276,32 @@
 
 <body>
     @if (auth()->guest() || auth()->check() && auth()->user()->role === 'customer')
-        @include('layouts.partials.navbar')
-        <div id="app">
+    @include('layouts.partials.navbar')
+    <div id="app">
+        @yield('content')
+    </div>
+    @include('layouts.partials.footer')
+
+    @else
+    @include('layouts.partials.navbar-dashboard')
+    <div id="app" class="d-flex">
+        <nav class="flex-shrink-0">
+            @include('layouts.partials.sidebar-dashboard')
+        </nav>
+        <div class="flex-grow-1 p-3">
             @yield('content')
         </div>
-        @include('layouts.partials.footer')
+    </div>
 
-        @else
-        @include('layouts.partials.navbar-dashboard')
-        <div id="app" class="d-flex">
-            <nav class="flex-shrink-0">
-                @include('layouts.partials.sidebar-dashboard')
-            </nav>
-            <div class="flex-grow-1 p-3">
-                @yield('content')
-            </div>
-        </div>
+    <script>
+        const $button = document.querySelector('#sidebar-toggle');
+        const $wrapper = document.querySelector('#wrapper');
 
-        <script>
-            const $button = document.querySelector('#sidebar-toggle');
-            const $wrapper = document.querySelector('#wrapper');
-
-            $button.addEventListener('click', (e) => {
-                e.preventDefault();
-                $wrapper.classList.toggle('toggled');
-            });
-        </script>
+        $button.addEventListener('click', (e) => {
+            e.preventDefault();
+            $wrapper.classList.toggle('toggled');
+        });
+    </script>
     @endif
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
