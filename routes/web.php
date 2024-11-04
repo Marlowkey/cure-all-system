@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('medicines', MedicineController::class);
 Route::post('/medicines/{id}/update-image', [MedicineController::class, 'updateMedicineImage'])->name('medicines.update-image');
+Route::get('/medicines/export', [MedicineController::class, 'export'])->name('medicines.export');
 
 Route::get('/search', SearchController::class);
 
@@ -58,12 +59,12 @@ Route::post('/orders/{order}/rider/complete', [OrderController::class, 'complete
 
 Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index'); // List all users
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Display form to create a new user
-Route::post('/users', [UserController::class, 'store'])->name('users.store'); // Handle form submission to create a user
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::get('/users/{id}/show', [UserController::class, 'show'])->name('users.show'); // Fixed typo in show route
+Route::get('/users/{id}/show', [UserController::class, 'show'])->name('users.show');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 

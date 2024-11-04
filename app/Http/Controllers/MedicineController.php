@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel;
+use App\Exports\MedicineExport;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Redirect;
 
@@ -94,5 +96,10 @@ class MedicineController extends Controller
         $medicine->save();
 
         return Redirect::route('medicines.index')->with('success', 'Medicine updated');
+    }
+
+    public function export()
+    {
+        return Excel::download(new MedicineExport, 'medicines.xlsx');
     }
 }

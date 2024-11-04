@@ -2,6 +2,10 @@
     <a href="{{ route('medicines.create') }}" class="btn btn-sm btn-success">
         <i class="fa-solid fa-plus"></i> Add Medicine
     </a>
+
+    <a href="{{ route('medicines.export') }}" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-file-excel"></i> Export to Excel
+    </a>
 </div>
 
 <div class="card mb-4">

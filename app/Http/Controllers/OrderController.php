@@ -85,6 +85,12 @@ class OrderController extends Controller
     {
         $user = Auth::user();
 
+        if (empty($user->username) || empty($user->contact_num) || empty($user->street) ||
+            empty($user->barangay) || empty($user->municipality)) {
+            return redirect()->route('profile.edit')->with('error', 'Please complete your profile with all relevant details before placing an order.');
+        }
+
+
         $orderItems = $user->orderItems()->with('medicine')->get();
 
         if ($orderItems->isEmpty()) {
