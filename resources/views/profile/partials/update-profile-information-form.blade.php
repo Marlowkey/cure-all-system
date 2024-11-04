@@ -125,13 +125,180 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
+
+        // Initial settings for map center and zoom
+        const philippinesCenter = [121.7740, 12.8797]; // Center of the Philippines
+        const initialZoom = 3; // Zoom out to show most of the Philippines
+
+        // Get user location from database
+        const userLatitude = "{{ $user->latitude ?? null }}";
+        const userLongitude = "{{ $user->longitude ?? null }}";
+
+        // Determine initial map center based on database values
+        const initialCenter = userLatitude && userLongitude
+            ? [userLongitude, userLatitude] // Use user location from database
+            : philippinesCenter; // Use center of the Philippines if no user location
+
+        // Create the map
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: initialCenter,
+            zoom: initialZoom
+        });
+
+        // Initialize Geolocate Control to track user location if available
+        const geolocateControl = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        });
+        map.addControl(geolocateControl);
+
+        let userMarker; // Variable to store the user's marker
+
+        // If user location exists in the database, add the marker
+        if (userLatitude && userLongitude) {
+            userMarker = new mapboxgl.Marker()
+                .setLngLat([userLongitude, userLatitude])
+                .addTo(map);
+        }
+
+        // Add a button to locate and fly to the user's location
+        document.getElementById('locateButton').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default button behavior
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const longitude = position.coords.longitude;
+                    const latitude = position.coords.latitude;
+
+                    // Update hidden inputs for longitude and latitude
+                    document.getElementById('longitude').value = longitude;
+                    document.getElementById('latitude').value = latitude;
+
+                    // Fly smoothly to the user's location
+                    map.flyTo({
+                        center: [longitude, latitude],
+                        zoom: 14.5, // Zoom in close to the user's location
+                        speed: 1.2,
+                        curve: 1.5
+                    });
+
+                    // Remove existing marker if it exists
+                    if (userMarker) {
+                        userMarker.remove();
+                    }
+
+                    // Add a single marker at the user's location
+                    userMarker = new mapboxgl.Marker()
+                        .setLngLat([longitude, latitude])
+                        .addTo(map);
+                }, function(error) {
+                    console.error("Geolocation error: ", error);
+                    alert("Unable to retrieve your location. Please ensure location services are enabled.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+
+        // Validate that location data exists before form submission
+        document.getElementById('locationForm').addEventListener('submit', function(e) {
+            if (!document.getElementById('longitude').value || !document.getElementById('latitude').value) {
+                alert("Please get your location first!");
+                e.preventDefault(); // Prevent form submission if location isn't set
+            }
+        });
+    });
+</script>
+
+
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            zoom: 14.5
+        });
+
+        // Add the Geolocate Control and trigger it on load
+        const geolocateControl = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        });
+        map.addControl(geolocateControl);
+
+        // Trigger geolocation request when map is ready
+        map.on('load', function() {
+            geolocateControl.trigger(); // Prompt location on load
+        });
+
+        // Update hidden inputs with user's location on geolocation success
+        geolocateControl.on('geolocate', function(e) {
+            const { longitude, latitude } = e.coords;
+
+            // Set the values in the hidden fields
+            document.getElementById('longitude').value = longitude;
+            document.getElementById('latitude').value = latitude;
+
+            // Add a marker to the user's current location
+            new mapboxgl.Marker()
+                .setLngLat([longitude, latitude])
+                .addTo(map);
+
+            // Optional: Update the GeoJSON layer if needed
+            const geojson = {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [longitude, latitude]
+                    },
+                    properties: {
+                        title: 'Your Location',
+                        description: 'You are here'
+                    }
+                }]
+            };
+            map.getSource('user-location').setData(geojson);
+        });
+
+        document.getElementById('locateButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            geolocateControl.trigger();
+        });
+
+        document.getElementById('locationForm').addEventListener('submit', function(e) {
+            if (!document.getElementById('longitude').value || !document.getElementById('latitude').value) {
+                alert("Please get your location first!");
+                e.preventDefault();
+                return;
+            }
+            this.submit();
+        });
+    });
+</script> -->
+
 
 <!-- Mapbox JS and Initialization Script -->
 <!-- <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script> -->
 <!-- caputol -->
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         mapboxgl.accessToken = '{{ env("MAPBOX_PUBLIC_TOKEN") }}';
 
@@ -264,4 +431,4 @@
             this.submit();
         });
     });
-</script>
+</script> -->
