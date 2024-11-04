@@ -4,8 +4,8 @@
     <a href="{{ route('medicines.show', $medicine->id) }}">
         <img src="{{ Str::startsWith($medicine->image_path, 'http') ? $medicine->image_path : asset('storage/' . $medicine->image_path) }}"
              alt="{{ $medicine['name'] }}"
-             class="w-100 h-60 img-fluid">
-    </a>
+             class="w-full h-48 object-cover">
+            </a>
     <div class="des">
         <span>{{ $medicine->brand }}</span>
         <h4>{{ $medicine->name }}</h4>

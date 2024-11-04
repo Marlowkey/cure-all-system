@@ -62,11 +62,17 @@
                         <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                     </select>
                 </div>
-
                 <div class="col-12 d-flex justify-content-end my-4">
                     <button type="submit" class="btn btn-primary me-2">Update</button>
-                    <button type="reset" class="btn btn-danger">Cancel</button>
+                    <button type="reset" class="btn btn-secondary me-2">Cancel</button>
+
+                    <form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
+
 
             </form>
         </div>

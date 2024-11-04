@@ -124,7 +124,7 @@ class UserController extends Controller
             'longitude' => 'nullable|numeric', // Add validation for longitude
             'latitude' => 'nullable|numeric',  // Add validation for latitude
         ]);
-        
+
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
@@ -151,7 +151,7 @@ class UserController extends Controller
             Log::error('Error updating user:', ['error' => $e->getMessage()]);
             return back()->withErrors('Error updating user.');
         }
-        
+
 
         // Attempt to save the updated user
         try {
@@ -166,9 +166,16 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        if ($user) {
+            $user->delete();
+            return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        }
+
+        return redirect()->route('users.index')->with('error', 'User not found');
     }
 }
 

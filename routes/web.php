@@ -57,11 +57,15 @@ Route::post('/orders/{order}/rider/complete', [OrderController::class, 'complete
 
 
 Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index'); // List all users
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create'); // Display form to create a new user
+Route::post('/users', [UserController::class, 'store'])->name('users.store'); // Handle form submission to create a user
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::get('/users/{id/show ', [UserController::class, 'show'])->name('users.show');
+Route::get('/users/{id}/show', [UserController::class, 'show'])->name('users.show'); // Fixed typo in show route
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-Route::resource('users', UserController::class)->middleware('auth');
 
 Route::get('/admin/audit-trails', [OrderAuditTrailController::class, 'index'])->name('admin.audit.trails');
 
