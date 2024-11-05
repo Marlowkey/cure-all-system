@@ -60,10 +60,10 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="group">
-                                        <label for="username" class="label">Username</label>
+                                        <label for="username" class="label">Name</label>
                                         <input id="username" type="text"
                                             class="input @error('name') is-invalid @enderror" name="name"
-                                            placeholder="Create your Username" value="{{ old('name') }}" required>
+                                            placeholder="Enter your Name" value="{{ old('name') }}" required>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
                                         @enderror
                                     </div>
                                     <div class="group">
-                                        <label for="password-confirm" class="label">Repeat Password</label>
+                                        <label for="password-confirm" class="label">Confirm Password</label>
                                         <input id="password-confirm" type="password" class="input"
                                             name="password_confirmation" placeholder="Repeat your password" required>
                                     </div>
