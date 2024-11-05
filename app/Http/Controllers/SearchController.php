@@ -16,3 +16,4 @@ class SearchController extends Controller
         return view('medicines.index', ['medicines' => $medicines]);
     }
 }
+
