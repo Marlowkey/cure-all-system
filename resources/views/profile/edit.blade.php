@@ -1,17 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@if (session('error'))
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
-                <div class="alert alert-danger text-center">
-                    <h4>Error</h4>
-                    <p>{{ session('error') }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
     <div class="container mt-5 mb-5 p-2 ">
         <div class="row justify-content-center">
             <div class="container mt-4">
@@ -34,6 +22,19 @@
             </div>
 
             <div>
+                @if (session('error'))
+                <div class="container mt-4 mb-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-md-10 col-sm-12">
+                            <div class="alert alert-danger text-center mb-4">
+                                <h4>Error</h4>
+                                <p>{{ session('error') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
                 <div>
                     @include('profile.partials.update-profile-information-form')
                 </div>
